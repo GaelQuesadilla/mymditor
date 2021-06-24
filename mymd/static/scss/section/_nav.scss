@@ -1,0 +1,55 @@
+nav {
+    @include transitionElement();
+    background-color: $main-color;
+    height: 50px;
+    padding: 5px;
+    display: flex;
+
+    body.dark & {
+        background-color: $main-color-dark;
+    }
+
+
+    .switch-mode {
+        background-color: #203080;
+        border-radius: 1000px;
+        border: none;
+        position: relative;
+        cursor: pointer;
+        display: flex;
+        outline: none;
+
+        &::after {
+            content: "";
+            display: block;
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            background: #f0f0f0;
+            border-radius: 100%;
+            top: 0;
+            left: 0;
+            right: unset;
+            box-shadow: 0 0 2px 2px rgba($color: #000, $alpha: 0.2);
+        }
+
+        &.active{
+            background: #e09020;
+            &::after {
+                right: 0;
+                left: unset;
+            }
+        }
+        span {
+            width: 40px;
+            height: 40px;
+            display: block;
+            background: none;
+            color: #fff;
+            i {
+                line-height: 40px;
+            }
+        }
+
+    }
+}

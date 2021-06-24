@@ -1,0 +1,23 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <script src="https://kit.fontawesome.com/215f3e6a22.js" crossorigin="anonymous"></script>
+    <title>Index</title>
+</head>
+<body>
+    <nav>
+        <button class="switch-mode" id="switch-mode">
+            <span><i class="fas fa-sun"></i></span>
+            <span><i class="fas fa-moon"></i></span>
+        </button>
+    </nav>
+    <article></article>
+    <footer></footer>
+
+    <script type="module" src="{% static 'js/index.js' %}"></script>
+</body>
+</html>
