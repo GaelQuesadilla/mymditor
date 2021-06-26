@@ -5,13 +5,22 @@ nav {
     padding: 5px;
     display: flex;
 
+    ul {
+        li {
+            display: inline-block;
+            color: #F0F0F0;
+            font-weight: 900;
+            margin: 2px 2px 2px 4px;
+        }
+    }
+
     body.dark & {
         background-color: $main-color-dark;
     }
 
 
     .switch-mode {
-        background-color: #203080;
+        background-color: #203040;
         border-radius: 1000px;
         border: none;
         position: relative;

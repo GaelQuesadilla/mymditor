@@ -1,9 +1,19 @@
+// --- VARS ---
 $green-color: #368e8c;
 $green-color-dark: #196261;
-$background-color: #0a1a1a;
-$main-color: $green-color;
-$main-color-dark: $green-color-dark; 
 
+$blue-color: #3322cc;
+$blue-color-dark: #201570;
+
+$purple-color: #503080;
+$purple-color-dark: #201030;
+
+
+$background-color: #090c0f;
+$main-color: $purple-color;
+$main-color-dark: $purple-color-dark; 
+
+// --- MIXINS --- 
 @mixin transitionElement {
     transition: 0.2s ease all;
 }

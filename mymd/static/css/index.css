@@ -9,18 +9,23 @@ body {
   margin: 0px;
   background-color: #ffffff; }
   body.dark {
-    background-color: #0a1a1a; }
+    background-color: #090c0f; }
 
 nav {
   transition: 0.2s ease all;
-  background-color: #368e8c;
+  background-color: #503080;
   height: 50px;
   padding: 5px;
   display: flex; }
+  nav ul li {
+    display: inline-block;
+    color: #F0F0F0;
+    font-weight: 900;
+    margin: 2px 2px 2px 4px; }
   body.dark nav {
-    background-color: #196261; }
+    background-color: #201030; }
   nav .switch-mode {
-    background-color: #203080;
+    background-color: #203040;
     border-radius: 1000px;
     border: none;
     position: relative;
