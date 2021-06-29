@@ -2,17 +2,22 @@
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; }
+  font-family: BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: #05050a; }
+  .dark * {
+    color: #F0F0F0; }
 
 body {
-  transition: 0.2s ease all;
+  transition: color 0.2s ease;
+  transition: background-color 0.2s ease;
   margin: 0px;
-  background-color: #ffffff; }
+  background-color: #f1f1f1; }
   body.dark {
     background-color: #090c0f; }
 
 nav {
-  transition: 0.2s ease all;
+  transition: color 0.2s ease;
+  transition: background-color 0.2s ease;
   background-color: #503080;
   height: 50px;
   padding: 5px;
@@ -57,3 +62,46 @@ nav {
       color: #fff; }
       nav .switch-mode span i {
         line-height: 40px; }
+
+body:nth-child(2) {
+  top: 50px; }
+
+.box-container {
+  display: flex;
+  flex-wrap: wrap; }
+  .box-container .element {
+    margin: 30px;
+    padding: 5px;
+    display: inline-block;
+    border: 2px solid #c0c0c0;
+    border-radius: 10px;
+    background-color: #e7e7e7; }
+    .dark .box-container .element {
+      border-color: #15151a;
+      background-color: #0d1115; }
+    .box-container .element .element__option {
+      transition: color 0.2s ease;
+      transition: background-color 0.2s ease;
+      text-align: center; }
+      .box-container .element .element__option a i {
+        width: 115px;
+        height: 115px;
+        line-height: 100px;
+        display: inline-block;
+        font-size: 100px;
+        color: rgba(96, 96, 96, 0.5); }
+        .dark .box-container .element .element__option a i {
+          color: rgba(192, 192, 192, 0.5); }
+    .box-container .element .element__title {
+      transition: color 0.2s ease;
+      transition: background-color 0.2s ease;
+      font-weight: 900;
+      font-size: 18px;
+      text-align: center; }
+
+.box-container #AddElementContainer {
+  border-color: #368e8c; }
+  .box-container #AddElementContainer span a i {
+    color: #368e8c; }
+  .box-container #AddElementContainer .element__title {
+    color: #368e8c; }

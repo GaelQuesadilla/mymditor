@@ -10,7 +10,25 @@
 </head>
 <body>
     {% include 'section/nav.html' %}
-    <article></article>
+    <article>
+        <div id="content">
+
+            <div id="docsContainer" class="box-container"></div>
+
+            <div id="docsOptions" class="box-container">
+                <div id="AddElementContainer" class="element">
+                    <span class="element__option">
+                        <a id="addElementOption">
+                            <i class="fas fa-plus"></i>
+                        </a>
+                    </span>
+                    <div class="element__title">Add element</div>
+                </div>
+            </div>
+
+        </div>
+    </article>
+        
     <footer></footer>
 
     <script type="module" src="{% static 'js/index.js' %}"></script>

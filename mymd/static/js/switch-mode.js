@@ -17,7 +17,6 @@ export default class Switch_mode {
 
         this.storageIndex = this.model.findElement("nigthMode");
         this.nigthMode = this.model.getElement(this.storageIndex).value;
-        console.log(this.nigthMode);
         this.changeSwitch();
         this.changeMode();
     }

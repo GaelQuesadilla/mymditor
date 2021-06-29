@@ -8,7 +8,7 @@ nav {
     ul {
         li {
             display: inline-block;
-            color: #F0F0F0;
+            color: $white-color;
             font-weight: 900;
             margin: 2px 2px 2px 4px;
         }
@@ -43,7 +43,7 @@ nav {
         }
 
         &.active{
-            background: #e09020;
+            background: $orange-color;
             &::after {
                 right: 0;
                 left: unset;
@@ -61,4 +61,8 @@ nav {
         }
 
     }
+}
+
+body:nth-child(2){
+    top: 50px;
 }

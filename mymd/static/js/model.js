@@ -11,6 +11,14 @@ export default class Model {
                     title: "nigthMode",
                     value: false,
                 },
+                {
+                    id: 2,
+                    title: "documents",
+                    value: [
+                        { title: "doc.md", value: "" },
+                        { title: "doc2.md", value: "" },
+                    ],
+                },
             ];
         }
     }
