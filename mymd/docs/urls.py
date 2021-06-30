@@ -19,9 +19,8 @@ from django.urls import path, include
 # from django.urls.conf import include
 from .views import *
 
+app_name = "docs"
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', index.as_view(), name="index"),
+    path('view/', docView.as_view(), name="docView")
 
-    path('docs/', include(('docs.urls', 'docs')))
 ]

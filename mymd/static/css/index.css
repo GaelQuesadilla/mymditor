@@ -27,6 +27,8 @@ nav {
     color: #F0F0F0;
     font-weight: 900;
     margin: 2px 2px 2px 4px; }
+    nav ul li a:link, nav ul li a:visited {
+      text-decoration: none; }
   body.dark nav {
     background-color: #201030; }
   nav .switch-mode {
@@ -84,6 +86,8 @@ body:nth-child(2) {
       transition: background-color 0.2s ease;
       text-align: center; }
       .box-container .element .element__option a i {
+        transition: color 0.2s ease;
+        transition: background-color 0.2s ease;
         width: 115px;
         height: 115px;
         line-height: 100px;

@@ -11,6 +11,12 @@ nav {
             color: $white-color;
             font-weight: 900;
             margin: 2px 2px 2px 4px;
+
+            a{
+                &:link, &:visited{
+                    text-decoration: none;
+                }
+            }
         }
     }
 

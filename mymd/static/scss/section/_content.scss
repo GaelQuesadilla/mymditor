@@ -19,6 +19,7 @@
             text-align: center;
             a{
                 i{
+                    @include transitionElement();
                     $size: 100px;
 
                     width: $size + 15px;
