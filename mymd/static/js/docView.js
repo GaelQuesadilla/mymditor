@@ -1,14 +1,49 @@
-import Switch_mode from "./switch-mode.js";
-import Model from "./model.js";
-import Urls from "./urls.js";
+export default class View {
+    constructor() {
+        this.model = null;
+        this.urls = null;
+    }
 
-document.addEventListener("DOMContentLoaded", function () {
-    console.log("Dom content loaded");
-    const switchMode = new Switch_mode();
-    const model = new Model();
-    const urls = new Urls();
+    setModel(model) {
+        this.model = model;
 
-    switchMode.setModel(model);
+        this.doc = {
+            index: this.model.findElement("documents"),
+        };
+    }
 
-    views.render();
-});
+    setUrls(urls) {
+        this.urls = urls;
+
+        const documents = this.model.getElement(this.doc.index);
+        const params = this.urls.getUrlParams();
+        const title = params.get("docName");
+        const indexValue = this.model.findIndex(
+            documents.value,
+            "title",
+            title
+        );
+
+        const value = documents.value[indexValue].value;
+
+        const values = {
+            id: indexValue,
+            title,
+            value,
+        };
+
+        Object.assign(this.doc, { values });
+
+        this.url = {
+            params,
+        };
+    }
+
+    updateContent() {
+        console.log(this.doc.values.value);
+    }
+
+    render() {
+        this.updateContent();
+    }
+}

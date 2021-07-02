@@ -15,8 +15,8 @@ export default class Model {
                     id: 2,
                     title: "documents",
                     value: [
-                        { title: "doc.md", value: "" },
-                        { title: "doc2.md", value: "" },
+                        { title: "doc.md", value: "documento 1" },
+                        { title: "doc2.md", value: "documento 2" },
                     ],
                 },
             ];

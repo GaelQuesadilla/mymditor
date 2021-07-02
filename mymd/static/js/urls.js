@@ -1,5 +1,8 @@
 export default class Urls {
-    constructor() {}
+    constructor() {
+        this.url = window.location.search;
+        this.urlSelector = null;
+    }
 
     createSearch(url, params) {
         var urlResult = "";
@@ -22,5 +25,13 @@ export default class Urls {
         }
 
         return urlResult;
+    }
+
+    getUrlParams() {
+        if (this.urlSelector === null) {
+            this.urlSelector = new URLSearchParams(this.url);
+        }
+
+        return this.urlSelector;
     }
 }
