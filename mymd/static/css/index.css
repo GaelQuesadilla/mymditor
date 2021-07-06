@@ -106,6 +106,31 @@ body:nth-child(2) {
 .box-container #AddElementContainer {
   border-color: #368e8c; }
   .box-container #AddElementContainer span a i {
+    cursor: hand;
     color: #368e8c; }
   .box-container #AddElementContainer .element__title {
     color: #368e8c; }
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0003;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .modal .modal-content {
+    background-color: #F0F0F0;
+    padding: 20px;
+    border-radius: 30%;
+    max-width: 100%;
+    width: 500px; }
+    .dark .modal .modal-content {
+      background-color: #202030; }
+  .modal.d-none {
+    pointer-events: none;
+    opacity: 0;
+    display: none; }

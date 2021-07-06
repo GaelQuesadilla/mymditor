@@ -25,6 +25,7 @@ $black-color-dark: #05050a;
 
 $gray-color: #c0c0c0;
 $gray-color-dark: #606060;
+$gray-color-darker: #202030;
 
 $background-color: #f1f1f1;
 $background-color-dark: #090c0f;
@@ -65,3 +66,4 @@ body {
 @import "section/nav";
 @import "section/content";
 @import "section/footer";
+@import "section/modal";

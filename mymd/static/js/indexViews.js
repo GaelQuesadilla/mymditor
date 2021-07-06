@@ -5,6 +5,28 @@ export default class Views {
 
         this.content = document.querySelector("#content");
         this.docsContainer = document.querySelector("#docsContainer");
+        this.addDocModal = document.querySelector("#addDocModal");
+
+        document
+            .querySelector("#addDocConfirmation")
+            .addEventListener("click", () => {
+                const values = this.getValues();
+                if (values == null || !values) {
+                    console.error("Invalid values");
+                }
+            });
+
+        document
+            .querySelector("#closeDocModal")
+            .addEventListener("click", () => {
+                this.closeModal(this.addDocModal);
+            });
+
+        document
+            .querySelector("#addElementContainer span a i")
+            .addEventListener("click", () => {
+                this.openModal(this.addDocModal);
+            });
     }
 
     setModel(model) {
@@ -31,6 +53,18 @@ export default class Views {
         </div>`;
 
         this.docsContainer.appendChild(element);
+    }
+
+    getValues() {
+        return null;
+    }
+
+    openModal(modal) {
+        modal.classList.remove("d-none");
+    }
+
+    closeModal(modal) {
+        modal.classList.add("d-none");
     }
 
     render() {

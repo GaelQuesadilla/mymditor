@@ -28,7 +28,18 @@
 
         </div>
     </article>
-        
+        <div>
+            <div class="modal d-none" id="addDocModal">
+                <div class="modal-content">
+                    <h3 class="title">Add element</h3>
+                    <input type="text" id="addDocTitle">
+                    <button id="addDocConfirmation" class="green button">
+                        Add doc
+                    </button>
+                    <button id="closeDocModal" class="red button">Cancel</button>
+                </div>
+            </div>
+        </div>
     <footer></footer>
 
     <script type="module" src="{% static 'js/index.js' %}"></script>
