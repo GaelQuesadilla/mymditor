@@ -1,5 +1,7 @@
-// --- VARS ---
-$red-color: #ca1527;
+//! --- VARS ---
+
+//-> --- COLORS ---
+$red-color: #c21d4e;
 $red-color-dark: #831421;
 
 $orange-color: #e09020;
@@ -26,7 +28,8 @@ $black-color-dark: #05050a;
 $gray-color: #c0c0c0;
 $gray-color-dark: #606060;
 $gray-color-darker: #202030;
-
+// -> ---
+//-> --- ESPECIFIC COLORS ---
 $background-color: #f1f1f1;
 $background-color-dark: #090c0f;
 
@@ -36,11 +39,41 @@ $main-color-dark: $purple-color-dark;
 $text-color: $black-color-dark;
 $text-color-dark: $white-color;
 
-// --- MIXINS --- 
+$input-color: #e2e0e3;
+$input-color-dark: #323035;
+// -> ---
+// !---
+//! --- MIXINS --- 
 @mixin transitionElement {
     transition: color 0.2s ease;
     transition: background-color 0.2s ease;
 }
+
+
+@mixin buttonColors($background, $color, $amount-1:0, $amount-2:0, $dif:10){
+    @if ($amount-1 >= 0) {
+        background-color: lighten($background, $amount-1);
+        border-color: lighten($background, $amount-1 + $dif);
+    }
+    @if ($amount-1 < 0) {
+        background-color: darken($background, $amount-1 * -1);
+        border-color: darken($background, ($amount-1 * -1) + $dif);
+    }
+
+    color: $color;
+    &:hover {
+        
+        @if ($amount-2 >= 0) {
+            background-color: lighten($background, $amount-2);
+            border-color: lighten($background, $amount-2 + $dif);
+        }
+        @if ($amount-2 < 0) {
+            background-color: darken($background, $amount-2 * -1);
+            border-color: darken($background, ($amount-2 * -1) + $dif);
+        }
+    }
+}
+// !---
 
 
 * {
@@ -48,21 +81,28 @@ $text-color-dark: $white-color;
     margin: 0px;
     box-sizing: border-box;
     font-family: BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-
+    //-> --- COLORS ---
     color: $black-color-dark;
     .dark &{
         color: $white-color
     }
+    // -> ---
 }
+
 
 body {
     @include transitionElement();
     margin: 0px;
+
+    //-> --- COLORS ---
     background-color: $background-color;
     &.dark {
         background-color: $background-color-dark;
     }
+    // -> ---
 }
+
+@import "section/forms";
 @import "section/nav";
 @import "section/content";
 @import "section/footer";

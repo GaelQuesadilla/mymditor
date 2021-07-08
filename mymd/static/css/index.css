@@ -15,13 +15,110 @@ body {
   body.dark {
     background-color: #090c0f; }
 
+input[type=text], textarea {
+  padding: 3px;
+  background-color: #e2e0e3;
+  color: #05050a; }
+  .dark input[type=text], .dark textarea {
+    background-color: #323035;
+    color: #F0F0F0; }
+
+button, input[type=submit], .button {
+  padding: 5px;
+  font-weight: bolder;
+  background-color: #F0F0F0;
+  color: #05050a; }
+  button.red, input[type=submit].red, .button.red {
+    background-color: #e65a83;
+    border-color: #ed86a5;
+    color: #F0F0F0; }
+    button.red:hover, input[type=submit].red:hover, .button.red:hover {
+      background-color: #9f1840;
+      border-color: #72112e; }
+  button.orange, input[type=submit].orange, .button.orange {
+    background-color: #ebb871;
+    border-color: #f1ce9d;
+    color: #15151a; }
+    button.orange:hover, input[type=submit].orange:hover, .button.orange:hover {
+      background-color: #e49d3b;
+      border-color: #eab468; }
+  button.yellow, input[type=submit].yellow, .button.yellow {
+    background-color: #d4d20d;
+    border-color: #a4a20a;
+    color: #15151a; }
+    button.yellow:hover, input[type=submit].yellow:hover, .button.yellow:hover {
+      background-color: #f6f470;
+      border-color: #f9f8a0; }
+  button.green, input[type=submit].green, .button.green {
+    background-color: #62c3c1;
+    border-color: #87d1d0;
+    color: #F0F0F0; }
+    button.green:hover, input[type=submit].green:hover, .button.green:hover {
+      background-color: #368e8c;
+      border-color: #44b3b0; }
+  button.blue, input[type=submit].blue, .button.blue {
+    background-color: #6a97e9;
+    border-color: #96b6ef;
+    color: #F0F0F0; }
+    button.blue:hover, input[type=submit].blue:hover, .button.blue:hover {
+      background-color: #3d78e2;
+      border-color: #6a97e9; }
+  button.purple, input[type=submit].purple, .button.purple {
+    background-color: #7e53be;
+    border-color: #9978cc;
+    color: #F0F0F0; }
+    button.purple:hover, input[type=submit].purple:hover, .button.purple:hover {
+      background-color: #503080;
+      border-color: #673ea5; }
+  button.white, input[type=submit].white, .button.white {
+    background-color: white;
+    border-color: white;
+    color: #05050a; }
+    button.white:hover, input[type=submit].white:hover, .button.white:hover {
+      background-color: #bdbdbd;
+      border-color: #a4a4a4; }
+  button.black, input[type=submit].black, .button.black {
+    background-color: #2c2c36;
+    border-color: #434352;
+    color: #F0F0F0; }
+    button.black:hover, input[type=submit].black:hover, .button.black:hover {
+      background-color: #030303;
+      border-color: black; }
+  button.gray, input[type=submit].gray, .button.gray {
+    background-color: #6d6d6d;
+    border-color: #868686;
+    color: #F0F0F0; }
+    button.gray:hover, input[type=submit].gray:hover, .button.gray:hover {
+      background-color: #4c4c4c;
+      border-color: #323232; }
+
+.input .input-input {
+  display: flex;
+  flex-wrap: wrap; }
+  .input .input-input input[type=text] {
+    flex: 3;
+    margin: 10px; }
+
+.input .input-options {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px; }
+  .input .input-options .button {
+    flex: 1;
+    margin: 0px 5px;
+    max-width: 30vw;
+    min-width: 80px; }
+
 nav {
   transition: color 0.2s ease;
   transition: background-color 0.2s ease;
-  background-color: #503080;
   height: 50px;
   padding: 5px;
-  display: flex; }
+  display: flex;
+  background: linear-gradient(to top, #503080, #603a9a); }
+  .dark nav {
+    background: linear-gradient(to top, #201030, #2a153f); }
   nav ul li {
     display: inline-block;
     color: #F0F0F0;
@@ -29,27 +126,26 @@ nav {
     margin: 2px 2px 2px 4px; }
     nav ul li a:link, nav ul li a:visited {
       text-decoration: none; }
-  body.dark nav {
-    background-color: #201030; }
   nav .switch-mode {
-    background-color: #203040;
+    padding: 0px;
     border-radius: 1000px;
     border: none;
     position: relative;
     cursor: pointer;
     display: flex;
-    outline: none; }
+    outline: none;
+    background-color: #203040; }
     nav .switch-mode::after {
       content: "";
       display: block;
       width: 40px;
       height: 40px;
       position: absolute;
-      background: #f0f0f0;
       border-radius: 100%;
       top: 0;
       left: 0;
       right: unset;
+      background: #f0f0f0;
       box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.2); }
     nav .switch-mode.active {
       background: #e09020; }
@@ -75,8 +171,8 @@ body:nth-child(2) {
     margin: 30px;
     padding: 5px;
     display: inline-block;
-    border: 2px solid #c0c0c0;
     border-radius: 10px;
+    border: 2px solid #c0c0c0;
     background-color: #e7e7e7; }
     .dark .box-container .element {
       border-color: #15151a;
@@ -94,6 +190,10 @@ body:nth-child(2) {
         display: inline-block;
         font-size: 100px;
         color: rgba(96, 96, 96, 0.5); }
+        .box-container .element .element__option a i:hover {
+          color: rgba(96, 96, 96, 0.8); }
+          .dark .box-container .element .element__option a i:hover {
+            color: rgba(192, 192, 192, 0.8); }
         .dark .box-container .element .element__option a i {
           color: rgba(192, 192, 192, 0.5); }
     .box-container .element .element__title {
@@ -108,26 +208,40 @@ body:nth-child(2) {
   .box-container #AddElementContainer span a i {
     cursor: hand;
     color: #368e8c; }
+    .box-container #AddElementContainer span a i:hover {
+      color: #196261; }
+      .dark .box-container #AddElementContainer span a i:hover {
+        color: #53bebb; }
   .box-container #AddElementContainer .element__title {
     color: #368e8c; }
 
+.title {
+  margin: 10px;
+  text-align: center;
+  font-size: 25px;
+  font-weight: bolder;
+  text-decoration: underline 3px solid #201030; }
+
 .modal {
+  display: flex;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #0003;
   z-index: 900;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  background-color: #00000060;
+  padding: 30px; }
   .modal .modal-content {
-    background-color: #F0F0F0;
+    flex: 1;
     padding: 20px;
-    border-radius: 30%;
-    max-width: 100%;
-    width: 500px; }
+    border-radius: 30px;
+    max-width: 700px;
+    min-width: 100px;
+    background-color: #F0F0F0; }
     .dark .modal .modal-content {
       background-color: #202030; }
   .modal.d-none {

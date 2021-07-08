@@ -1,10 +1,15 @@
 nav {
     @include transitionElement();
-    background-color: $main-color;
     height: 50px;
     padding: 5px;
     display: flex;
 
+    // -> --- COLORS --- 
+    background: linear-gradient(to top, $main-color, lighten($main-color, 7));
+    .dark & {
+        background: linear-gradient(to top,$main-color-dark, lighten($main-color-dark, 4));
+    }
+    // -> --- 
     ul {
         li {
             display: inline-block;
@@ -20,19 +25,20 @@ nav {
         }
     }
 
-    body.dark & {
-        background-color: $main-color-dark;
-    }
+    
 
 
     .switch-mode {
-        background-color: #203040;
+        padding: 0px;
         border-radius: 1000px;
         border: none;
         position: relative;
         cursor: pointer;
         display: flex;
         outline: none;
+        // -> --- COLORS --- 
+        background-color: #203040;
+        // -> --- 
 
         &::after {
             content: "";
@@ -40,16 +46,20 @@ nav {
             width: 40px;
             height: 40px;
             position: absolute;
-            background: #f0f0f0;
             border-radius: 100%;
             top: 0;
             left: 0;
             right: unset;
+            // -> --- COLORS --- 
+            background: #f0f0f0;
             box-shadow: 0 0 2px 2px rgba($color: #000, $alpha: 0.2);
+            // -> --- 
         }
 
         &.active{
+            // -> --- COLORS --- 
             background: $orange-color;
+            // -> --- 
             &::after {
                 right: 0;
                 left: unset;
@@ -60,7 +70,9 @@ nav {
             height: 40px;
             display: block;
             background: none;
+            // -> --- COLORS --- 
             color: #fff;
+            // -> ---
             i {
                 line-height: 40px;
             }

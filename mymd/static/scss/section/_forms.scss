@@ -1,0 +1,80 @@
+// ? Styles of the input tags
+input[type=text], textarea{
+    padding: 3px;
+
+    //-> --- COLORS ---
+    background-color: $input-color;
+    color: $black-color-dark;
+
+    .dark & {
+        background-color: $input-color-dark;
+        color: $white-color;
+    }
+    // -> ---
+}
+
+button, input[type=submit], .button{
+    padding: 5px;
+    font-weight: bolder;
+    //-> --- COLORS ---
+    background-color: $white-color;
+    color: $black-color-dark;
+
+    &.red{
+        @include buttonColors($red-color, $white-color, 19, -8);
+    }
+    &.orange{
+        @include buttonColors($orange-color, $black-color, 18, 6);
+    }
+    &.yellow{
+        @include buttonColors($yellow-color, $black-color, -8, 18);
+    }
+    &.green{
+        @include buttonColors($green-color, $white-color, 19, 0);
+    }
+    &.blue{
+        @include buttonColors($blue-color, $white-color, 15, 5);
+    }
+    &.purple{
+        @include buttonColors($purple-color, $white-color, 19, 0);
+    }
+    &.white{
+        @include buttonColors($white-color, $black-color-dark, 19, -20);
+    }
+    &.black{
+        @include buttonColors($black-color, $white-color, 10, -8);
+    }
+    &.gray{
+        @include buttonColors($gray-color-dark, $white-color, 5, -8);
+    }
+    
+
+
+    // -> ---
+
+}
+
+.input{
+    .input-input{
+        display: flex;
+        flex-wrap: wrap;
+        input[type=text] {
+            flex: 3;
+            margin: 10px;
+        }
+    }
+
+    .input-options{
+        flex: 1;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 10px;
+        .button {
+            flex: 1;
+            margin: 0px 5px;
+            max-width: 30vw;
+            min-width: 80px;
+        }
+    }
+
+}

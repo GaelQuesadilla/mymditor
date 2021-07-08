@@ -29,18 +29,38 @@
         </div>
     </article>
         <div>
-            <div class="modal d-none" id="addDocModal">
+            <div class="modal" id="addDocModal">
                 <div class="modal-content">
                     <h3 class="title">Add element</h3>
-                    <input type="text" id="addDocTitle">
-                    <button id="addDocConfirmation" class="green button">
-                        Add doc
-                    </button>
-                    <button id="closeDocModal" class="red button">Cancel</button>
+                    <div class="input">
+                        <div class="input-input">
+                            <input type="text" id="addDocTitle">
+                        </div>
+                    
+                        <div class="input-options">
+                            <button id="addDocConfirmation" class="green button">
+                                Add doc
+                            </button>
+                            <button id="closeDocModal" class="red button">Cancel</button>
+                        </div>
+                    </div>
+                        
+                    
+                    
                 </div>
             </div>
         </div>
-    <footer></footer>
+    <footer>
+        <button class="button red">---</button>
+        <button class="button orange">---</button>
+        <button class="button yellow">---</button>
+        <button class="button green">---</button>
+        <button class="button blue">---</button>
+        <button class="button purple">---</button>
+        <button class="button white">---</button>
+        <button class="button black">---</button>
+        <button class="button gray">---</button>
+    </footer>
 
     <script type="module" src="{% static 'js/index.js' %}"></script>
 </body>

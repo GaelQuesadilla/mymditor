@@ -6,13 +6,16 @@
         margin: 30px;
         padding: 5px;
         display: inline-block;
-        border: 2px solid $gray-color;
         border-radius: 10px;
+
+        //-> --- COLORS ---
+        border: 2px solid $gray-color;
         background-color: darken($background-color, 4);
         .dark & {
             border-color: $black-color;
             background-color: lighten($background-color-dark, 2)
         }
+        // -> ---
 
         .element__option{
             @include transitionElement();
@@ -20,6 +23,7 @@
             a{
                 i{
                     @include transitionElement();
+
                     $size: 100px;
 
                     width: $size + 15px;
@@ -27,10 +31,20 @@
                     line-height: $size;
                     display: inline-block;
                     font-size: $size;
+                    
+                    //-> --- COLORS ---
                     color: transparentize($gray-color-dark, 0.5);
-                    .dark &{
-                        color: transparentize($gray-color, 0.5)
+                    &:hover {
+                        color: transparentize($gray-color-dark, 0.2);
+                        .dark & {
+                                color: transparentize($gray-color, 0.2)
+                        }
                     }
+                    .dark &{
+                        color: transparentize($gray-color, 0.5);
+                        
+                    }
+                    // -> ---
 
                 }
             }
@@ -53,12 +67,38 @@
             a {
                 i{   
                     cursor: hand;
+
+                    //-> --- COLORS ---
                     color: $green-color;
+                    &:hover {
+                        color: $green-color-dark;
+                        .dark &{
+                            color: lighten($green-color, 15);
+                        }
+                    }
+                    // -> ---
                 }}
         }
         .element__title {
+            //-> --- COLORS ---
             color: $green-color;
+            // -> ---
         }
     }
 
 }
+
+
+
+.title {
+    margin: 10px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bolder;
+
+    //-> --- COLORS ---
+    text-decoration: underline  3px solid $main-color-dark;
+    // -> ---
+}
+
+// .-

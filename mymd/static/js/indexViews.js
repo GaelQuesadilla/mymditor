@@ -11,9 +11,12 @@ export default class Views {
             .querySelector("#addDocConfirmation")
             .addEventListener("click", () => {
                 const values = this.getValues();
-                if (values == null || !values) {
+                if (values.title == null || !values.title) {
                     console.error("Invalid values");
                 }
+
+                this.addElement(values);
+                this.updateModal;
             });
 
         document
@@ -37,6 +40,7 @@ export default class Views {
         this.urls = urls;
     }
 
+    // ? This function only add an element on the view
     addElement(values) {
         const docUrlSearch = this.urls.createSearch("view", {
             docName: values.title,
@@ -56,7 +60,9 @@ export default class Views {
     }
 
     getValues() {
-        return null;
+        const input = document.querySelector("#addDocTitle");
+        const values = { title: input.value, value: "" };
+        return values;
     }
 
     openModal(modal) {
