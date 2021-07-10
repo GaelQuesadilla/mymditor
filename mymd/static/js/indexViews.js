@@ -7,16 +7,22 @@ export default class Views {
         this.docsContainer = document.querySelector("#docsContainer");
         this.addDocModal = document.querySelector("#addDocModal");
 
+        this.docData = null;
+
         document
             .querySelector("#addDocConfirmation")
             .addEventListener("click", () => {
                 const values = this.getValues();
                 if (values.title == null || !values.title) {
                     console.error("Invalid values");
-                }
+                } else {
+                    this.addElement(values);
 
-                this.addElement(values);
-                this.updateModal;
+                    this.model.updateElement([this.docData.index, "value"], {
+                        title: values.title,
+                        value: values.value,
+                    });
+                }
             });
 
         document
@@ -34,6 +40,10 @@ export default class Views {
 
     setModel(model) {
         this.model = model;
+
+        this.docData = {
+            index: this.model.findElement("documents"),
+        };
     }
 
     setUrls(urls) {
@@ -74,8 +84,7 @@ export default class Views {
     }
 
     render() {
-        const index = this.model.findElement("documents");
-        const docs = this.model.getElement(index);
+        const docs = this.model.getElement(this.docData.index);
         for (let values of docs.value) {
             console.log(values);
             this.addElement(values);
