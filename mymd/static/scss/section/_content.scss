@@ -101,4 +101,18 @@
     // -> ---
 }
 
-// .-
+.document {
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+    .document-paper {
+        padding: 10px;
+        $width: 80vw;
+        $heigth: 80vh;
+
+        max-width: $width;
+        min-width: $width;
+        max-height: $heigth;
+        min-height: $heigth;
+    }
+}

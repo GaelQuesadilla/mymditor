@@ -1,38 +1,35 @@
 export default class View {
     constructor() {
+        const saveButton = document.createElement("li");
+        saveButton.innerHTML = `<button class="green" id="saveButton">Save</button>`;
+        document.querySelector("nav ul").appendChild(saveButton);
+
         this.model = null;
+        this.doc = {};
         this.urls = null;
+        this.document = document.querySelector("#doc");
+        this.saveButton = document.querySelector("#saveButton");
+        this.saveButton.addEventListener("click", () => {
+            this.save();
+        });
     }
 
     setModel(model) {
         this.model = model;
-
-        this.doc = {
-            index: this.model.findElement("documents"),
-        };
     }
 
     setUrls(urls) {
         this.urls = urls;
 
-        const documents = this.model.getElement(this.doc.index);
         const params = this.urls.getUrlParams();
         const title = params.get("docName");
-        const indexValue = this.model.findIndex(
-            documents.value,
-            "title",
-            title
-        );
 
-        const value = documents.value[indexValue].value;
+        const value = this.model.getElement(["documents", "value", title]);
 
-        const values = {
-            id: indexValue,
-            title,
-            value,
-        };
+        let document = {};
+        document[title] = { value: value.value };
 
-        Object.assign(this.doc, { values });
+        Object.assign(this.doc, { document }, { title: title });
 
         this.url = {
             params,
@@ -40,7 +37,15 @@ export default class View {
     }
 
     updateContent() {
-        console.log(this.doc.values.value);
+        console.log();
+        this.document.value = this.doc.document[this.doc.title].value;
+    }
+    save() {
+        const values = {
+            value: this.document.value,
+        };
+        const index = ["documents", "value", this.doc.title];
+        this.model.updateElement(index, values, "assign");
     }
 
     render() {

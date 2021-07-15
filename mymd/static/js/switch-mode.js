@@ -15,8 +15,7 @@ export default class Switch_mode {
     setModel(model) {
         this.model = model;
 
-        this.storageIndex = this.model.findElement("nigthMode");
-        this.nigthMode = this.model.getElement([this.storageIndex]).value;
+        this.nigthMode = this.model.getElement(["style"]).nigthMode;
         this.changeSwitch();
         this.changeMode();
     }
@@ -39,10 +38,8 @@ export default class Switch_mode {
     updateMode() {
         this.nigthMode = !this.nigthMode;
         this.model.updateElement(
-            [this.storageIndex],
-            {
-                value: this.nigthMode,
-            },
+            ["style"],
+            { nigthMode: this.nigthMode },
             "assign"
         );
     }

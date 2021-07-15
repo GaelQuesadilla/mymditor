@@ -27,7 +27,6 @@ nav {
 
     
 
-
     .switch-mode {
         padding: 0px;
         border-radius: 1000px;
@@ -38,6 +37,7 @@ nav {
         outline: none;
         // -> --- COLORS --- 
         background-color: #203040;
+        color: $white-color;
         // -> --- 
 
         &::after {
@@ -71,7 +71,7 @@ nav {
             display: block;
             background: none;
             // -> --- COLORS --- 
-            color: #fff;
+            color: $white-color;
             // -> ---
             i {
                 line-height: 40px;

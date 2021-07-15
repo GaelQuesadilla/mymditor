@@ -4,12 +4,17 @@
         <li>
             <a href="{% url 'index' %}">MYMD</a>
         </li>
-        <li>
+
+        {% block navcontent %}
+        
+        {% endblock %}
+        <li class="switch">
             <button class="switch-mode" id="switch-mode">
                 <span><i class="fas fa-sun"></i></span>
                 <span><i class="fas fa-moon"></i></span>
             </button>
         </li>
+        
     </ul>
 
 </nav>

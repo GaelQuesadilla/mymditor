@@ -2,29 +2,33 @@ export default class Views {
     constructor() {
         this.model = null;
         this.urls = null;
-
         this.content = document.querySelector("#content");
         this.docsContainer = document.querySelector("#docsContainer");
-        this.addDocModal = document.querySelector("#addDocModal");
+        this.addDocModal = document.querySelector("#addDocModal"); // this modal displays for add an element
 
         this.docData = null;
 
+        //This function try to add an element in local storage, after the element will be added on the view
         document
             .querySelector("#addDocConfirmation")
             .addEventListener("click", () => {
                 const values = this.getValues();
-                if (values.title == null || !values.title) {
+                if (values == null || !values) {
                     console.error("Invalid values");
                 } else {
-                    this.addElement(values);
+                    const addedDoc = this.model.updateElement(
+                        ["documents", "value"],
+                        values,
+                        "push"
+                    );
 
-                    this.model.updateElement([this.docData.index, "value"], {
-                        title: values.title,
-                        value: values.value,
-                    });
+                    // model.updateElement() return null when errors doesnt happen
+                    if (addedDoc == null) {
+                        this.addElement(values);
+                    }
                 }
             });
-
+        //-> --- Open and close a add doc modal
         document
             .querySelector("#closeDocModal")
             .addEventListener("click", () => {
@@ -36,24 +40,22 @@ export default class Views {
             .addEventListener("click", () => {
                 this.openModal(this.addDocModal);
             });
+        //-> ---
     }
 
     setModel(model) {
         this.model = model;
-
-        this.docData = {
-            index: this.model.findElement("documents"),
-        };
     }
 
     setUrls(urls) {
         this.urls = urls;
     }
 
-    // ? This function only add an element on the view
+    // This function only add an element on the view
     addElement(values) {
+        const title = Object.keys(values)[0];
         const docUrlSearch = this.urls.createSearch("view", {
-            docName: values.title,
+            docName: title,
         });
         const element = document.createElement("div");
         element.innerHTML = `
@@ -63,15 +65,17 @@ export default class Views {
                     <i class="fas fa-file"></i>
                 </a>
             </span>
-            <div class="element__title">${values.title}</div>
+            <div class="element__title">${title}</div>
         </div>`;
 
         this.docsContainer.appendChild(element);
     }
 
     getValues() {
-        const input = document.querySelector("#addDocTitle");
-        const values = { title: input.value, value: "" };
+        const input = this.addDocModal.querySelector("#addDocTitle");
+        let values = {};
+        values[input.value] = { value: "" };
+
         return values;
     }
 
@@ -84,10 +88,11 @@ export default class Views {
     }
 
     render() {
-        const docs = this.model.getElement(this.docData.index);
-        for (let values of docs.value) {
-            console.log(values);
-            this.addElement(values);
+        const docs = this.model.getElement(["documents", "value"]);
+        for (let values in docs) {
+            let element = {};
+            element[values] = docs[values];
+            this.addElement(element);
         }
     }
 }

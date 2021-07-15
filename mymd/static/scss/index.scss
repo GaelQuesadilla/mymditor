@@ -53,11 +53,11 @@ $input-color-dark: #323035;
 @mixin buttonColors($background, $color, $amount-1:0, $amount-2:0, $dif:10){
     @if ($amount-1 >= 0) {
         background-color: lighten($background, $amount-1);
-        border-color: lighten($background, $amount-1 + $dif);
+        border-color: lighten($background, $amount-1);
     }
     @if ($amount-1 < 0) {
         background-color: darken($background, $amount-1 * -1);
-        border-color: darken($background, ($amount-1 * -1) + $dif);
+        border-color: darken($background, ($amount-1 * -1));
     }
 
     color: $color;
