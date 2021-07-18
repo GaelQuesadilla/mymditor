@@ -1,9 +1,5 @@
 export default class View {
     constructor() {
-        const saveButton = document.createElement("li");
-        saveButton.innerHTML = `<button class="green" id="saveButton">Save</button>`;
-        document.querySelector("nav ul").appendChild(saveButton);
-
         this.model = null;
         this.doc = {};
         this.urls = null;
@@ -38,11 +34,11 @@ export default class View {
 
     updateContent() {
         console.log();
-        this.document.value = this.doc.document[this.doc.title].value;
+        this.document.innerHTML = this.doc.document[this.doc.title].value;
     }
     save() {
         const values = {
-            value: this.document.value,
+            value: this.document.innerHTML,
         };
         const index = ["documents", "value", this.doc.title];
         this.model.updateElement(index, values, "assign");

@@ -1,54 +1,54 @@
+
+
 .box-container {
     display: flex;
     flex-wrap: wrap;
+}
+.element {
+    margin: 30px;
+    padding: 10px;
+    display: inline-block;
+    border-radius: 10px;
 
-    .element {
-        margin: 30px;
-        padding: 5px;
-        display: inline-block;
-        border-radius: 10px;
+    //-> --- COLORS ---
+    background-color: $box-color;
+    .dark & {
+        background-color: $box-color-dark;
+    }
+    // -> ---
 
-        //-> --- COLORS ---
-        border: 2px solid $gray-color;
-        background-color: darken($background-color, 4);
-        .dark & {
-            border-color: $black-color;
-            background-color: lighten($background-color-dark, 2)
-        }
-        // -> ---
+    .element__option{
+        @include transitionElement();
+        text-align: center;
+        a{
+            i{
+                @include transitionElement();
 
-        .element__option{
-            @include transitionElement();
-            text-align: center;
-            a{
-                i{
-                    @include transitionElement();
+                $size: 100px;
 
-                    $size: 100px;
-
-                    width: $size + 15px;
-                    height: $size + 15px;
-                    line-height: $size;
-                    display: inline-block;
-                    font-size: $size;
-                    
-                    //-> --- COLORS ---
-                    color: transparentize($gray-color-dark, 0.5);
-                    &:hover {
-                        color: transparentize($gray-color-dark, 0.2);
-                        .dark & {
-                                color: transparentize($gray-color, 0.2)
-                        }
+                width: $size + 15px;
+                height: $size + 15px;
+                line-height: $size;
+                display: inline-block;
+                font-size: $size;
+                
+                //-> --- COLORS ---
+                color: transparentize($gray-color-dark, 0.3);
+                &:hover {
+                    color: transparentize($gray-color-dark, 0.1);
+                    .dark & {
+                            color: transparentize($gray-color, 0.1)
                     }
-                    .dark &{
-                        color: transparentize($gray-color, 0.5);
-                        
-                    }
-                    // -> ---
-
                 }
+                .dark &{
+                    color: transparentize($gray-color, 0.5);
+                    
+                }
+                // -> ---
+
             }
         }
+    }
 
         .element__title{
             @include transitionElement();
@@ -57,7 +57,7 @@
             text-align: center;
         }
     }
-}
+
 
 .box-container {
     #AddElementContainer {
@@ -101,18 +101,49 @@
     // -> ---
 }
 
-.document {
-    padding: 20px;
-    align-items: center;
-    justify-content: center;
-    .document-paper {
-        padding: 10px;
-        $width: 80vw;
-        $heigth: 80vh;
+.optionList {
+    margin: 0px;
+    padding: 0px;
+    ul {
+        display: flex;
+        flex-wrap: wrap;
 
-        max-width: $width;
-        min-width: $width;
-        max-height: $heigth;
-        min-height: $heigth;
+        // -> --- COLORS --- 
+        background-color: $purple-color;
+        .dark & {
+            background-color: $purple-color-dark;
+        }
+        // -> ---
+        li{
+            padding: 4px;
+            margin: 3px;
+            display: inline-block;
+            button {
+                font-size: 20px;
+            }
+            input {
+                height: 80%;
+                width: 80px;
+            }
+        }
+    }
+}
+
+.document{
+    text-align: center;
+    .document-paper {
+        display: inline-block;
+        width: 80vw;
+        margin: 30px;
+        padding: 20px;
+        border-radius: 20px;
+        text-align: left;
+        
+        // -> --- COLORS ---
+        background-color: transparentize($white-color, 0.1);
+            .dark & {
+            background-color: transparentize($white-color, 0.85);
+        }
+        // -> --- 
     }
 }

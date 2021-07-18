@@ -1,10 +1,11 @@
 // ? Styles of the input tags
-input[type=text], textarea{
+input[type=text], input[type=number], textarea{
     padding: 3px;
 
     //-> --- COLORS ---
     background-color: $input-color;
     color: $black-color-dark;
+    font-size: 15px;
 
     .dark & {
         background-color: $input-color-dark;
@@ -48,6 +49,12 @@ button, input[type=submit], .button{
         @include buttonColors($gray-color-dark, $white-color, 5, -8);
     }
     
+    &.normal {
+        @include buttonColors($white-color, $black-color, 5, -8);
+        .dark & {
+            @include buttonColors($input-color-dark, $white-color, 3, -8);
+        }
+    }
 
 
     // -> ---

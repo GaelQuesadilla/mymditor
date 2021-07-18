@@ -10,10 +10,63 @@
 </head>
 <body>
     {% include 'section/nav.html' %}
-    <section class="content" id="DocValue">
-        <div class="document">
-            <textarea class="document-paper" id="doc"></textarea>
+    <section class="content"></section>
+    <div class="document">
+        <div class="optionList">
+            <ul>
+                <li>
+                    <button datatype="bold" id="btnBold" class="normal">
+                        <b>b</b>
+                    </button>
+                </li>
+
+                <li>
+                    <button datatype="underline" id="btnUnderline" class="normal">
+                        <u>u</u>
+                    </button>
+                </li>
+
+                <li>
+                    <button datatype="italic" id="btnItalic" class="normal">
+                        <i>i</i>
+                    </button>
+                </li>
+
+                <li>
+                    <button datatype="justifyCenter" id="btnCenter" class="normal">
+                        center
+                    </button>
+                </li>
+
+                <li>
+                    <button datatype="justifyLeft" id="btnLeft" class="normal">
+                        left
+                    </button>
+                </li>
+
+                
+                <li>
+                    <button datatype="insertUnorderedList" id="btnUnonderedList" class="normal">
+                        list
+                    </button>
+                </li>
+
+                <li>
+                    <input type="number" min="1" max="7" value="1" id="inputFontSize">
+                    <button datatype="fontSize" id="btnFontSize" class="normal">
+                        ✓
+                    </button>
+                </li>
+
+                <li>
+                    <button class="green" id="saveButton">Save</button>
+                </li>
+
+
+            </ul>
         </div>
+        <div class="document-paper" id="doc" contenteditable=""></div>
+    </div>
     </section>
         
     <footer></footer>

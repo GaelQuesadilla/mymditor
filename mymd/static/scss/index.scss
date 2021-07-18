@@ -30,8 +30,11 @@ $gray-color-dark: #606060;
 $gray-color-darker: #202030;
 // -> ---
 //-> --- ESPECIFIC COLORS ---
-$background-color: #f1f1f1;
-$background-color-dark: #090c0f;
+$background-color: #dadddd;
+$background-color-dark: #0a1010;
+
+$box-color: #f1f1f1;
+$box-color-dark: #1d1f1f;
 
 $main-color: $purple-color;
 $main-color-dark: $purple-color-dark; 
@@ -73,6 +76,8 @@ $input-color-dark: #323035;
         }
     }
 }
+
+
 // !---
 
 
@@ -100,6 +105,10 @@ body {
         background-color: $background-color-dark;
     }
     // -> ---
+}
+
+.d-none {
+    display: none
 }
 
 @import "section/forms";
