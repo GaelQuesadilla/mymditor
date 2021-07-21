@@ -14,7 +14,22 @@
                 <span><i class="fas fa-moon"></i></span>
             </button>
         </li>
-        
+
+        <li>
+            {% if login %}
+            <p>
+                {{username}}
+            </p>
+            <a href="{% url 'logout' %}">
+                <button class="button RED">LOGOUT</button>
+            </a>
+            {% endif %}
+            {% if not login %}
+            <a href="{% url 'login' %}">
+                <button class="button blue">LOGIN</button>
+            </a>
+            {% endif %}
+        </li>
     </ul>
 
 </nav>

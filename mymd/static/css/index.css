@@ -18,12 +18,13 @@ body {
 .d-none {
   display: none; }
 
-input[type=text], input[type=number], textarea {
+input[type=text], input[type=number], input[type=password], input[type=email], textarea {
   padding: 3px;
+  margin: 4px;
   background-color: #e2e0e3;
   color: #05050a;
   font-size: 15px; }
-  .dark input[type=text], .dark input[type=number], .dark textarea {
+  .dark input[type=text], .dark input[type=number], .dark input[type=password], .dark input[type=email], .dark textarea {
     background-color: #323035;
     color: #F0F0F0; }
 
@@ -128,6 +129,23 @@ button, input[type=submit], .button {
     max-width: 30vw;
     min-width: 80px; }
 
+form p {
+  padding: 3px;
+  margin: 7px;
+  text-align: center; }
+  form p label, form p input {
+    font-size: 20px;
+    font-weight: 900; }
+
+form input[type=submit] {
+  padding: 10px;
+  text-align: right; }
+
+p {
+  font-size: 17px;
+  margin: 10px;
+  padding: 10px; }
+
 nav {
   transition: color 0.2s ease;
   transition: background-color 0.2s ease;
@@ -144,6 +162,8 @@ nav {
     margin: 2px 2px 2px 4px; }
     nav ul li a:link, nav ul li a:visited {
       text-decoration: none; }
+    nav ul li p {
+      display: inline; }
   nav .switch-mode {
     padding: 0px;
     border-radius: 1000px;
@@ -271,6 +291,14 @@ body:nth-child(2) {
     background-color: rgba(240, 240, 240, 0.9); }
     .dark .document .document-paper {
       background-color: rgba(240, 240, 240, 0.15); }
+
+.box {
+  margin: 30px;
+  padding: 20px;
+  border-radius: 40px;
+  background-color: #F0F0F0; }
+  .dark .box {
+    background-color: #202030; }
 
 .modal {
   display: flex;

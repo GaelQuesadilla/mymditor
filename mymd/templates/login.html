@@ -1,0 +1,34 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <script src="https://kit.fontawesome.com/215f3e6a22.js" crossorigin="anonymous"></script>
+    <title>Index</title>
+</head>
+<body>
+    {% include 'section/nav.html' %}
+    <article>
+        <id id="content">
+
+            <div class="box">
+                <h3 class="title">LOGIN</h3>
+                
+                <form action="{% url 'login' %}" method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" value="Sign in" class="button green">
+                </form>
+
+                <p>You dont have an account? <a href="{% url 'register' %}">Sign in</a></p>
+            </div>
+                    
+        </id>
+    </article>
+    <footer></footer>
+
+    <script type="module" src="{% static 'js/genericIndex.js' %}"></script>
+</body>
+</html>
