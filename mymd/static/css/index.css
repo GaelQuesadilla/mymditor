@@ -33,6 +33,9 @@ button, input[type=submit], .button {
   font-weight: bolder;
   background-color: #F0F0F0;
   color: #05050a; }
+  .dark button, .dark input[type=submit], .dark .button {
+    background-color: #323035;
+    color: #F0F0F0; }
   button.red, input[type=submit].red, .button.red {
     background-color: #e65a83;
     border-color: #e65a83;
@@ -141,6 +144,13 @@ form input[type=submit] {
   padding: 10px;
   text-align: right; }
 
+.title {
+  margin: 10px;
+  text-align: center;
+  font-size: 25px;
+  font-weight: bolder;
+  text-decoration: underline 3px solid #201030; }
+
 p {
   font-size: 17px;
   margin: 10px;
@@ -203,63 +213,6 @@ nav {
 body:nth-child(2) {
   top: 50px; }
 
-.box-container {
-  display: flex;
-  flex-wrap: wrap; }
-
-.element {
-  margin: 30px;
-  padding: 10px;
-  display: inline-block;
-  border-radius: 10px;
-  background-color: #f1f1f1; }
-  .dark .element {
-    background-color: #1d1f1f; }
-  .element .element__option {
-    transition: color 0.2s ease;
-    transition: background-color 0.2s ease;
-    text-align: center; }
-    .element .element__option a i {
-      transition: color 0.2s ease;
-      transition: background-color 0.2s ease;
-      width: 115px;
-      height: 115px;
-      line-height: 100px;
-      display: inline-block;
-      font-size: 100px;
-      color: rgba(96, 96, 96, 0.7); }
-      .element .element__option a i:hover {
-        color: rgba(96, 96, 96, 0.9); }
-        .dark .element .element__option a i:hover {
-          color: rgba(192, 192, 192, 0.9); }
-      .dark .element .element__option a i {
-        color: rgba(192, 192, 192, 0.5); }
-  .element .element__title {
-    transition: color 0.2s ease;
-    transition: background-color 0.2s ease;
-    font-weight: 900;
-    font-size: 18px;
-    text-align: center; }
-
-.box-container #AddElementContainer {
-  border-color: #368e8c; }
-  .box-container #AddElementContainer span a i {
-    cursor: hand;
-    color: #368e8c; }
-    .box-container #AddElementContainer span a i:hover {
-      color: #196261; }
-      .dark .box-container #AddElementContainer span a i:hover {
-        color: #53bebb; }
-  .box-container #AddElementContainer .element__title {
-    color: #368e8c; }
-
-.title {
-  margin: 10px;
-  text-align: center;
-  font-size: 25px;
-  font-weight: bolder;
-  text-decoration: underline 3px solid #201030; }
-
 .optionList {
   margin: 0px;
   padding: 0px; }
@@ -291,6 +244,57 @@ body:nth-child(2) {
     background-color: rgba(240, 240, 240, 0.9); }
     .dark .document .document-paper {
       background-color: rgba(240, 240, 240, 0.15); }
+
+.box-container {
+  display: flex;
+  flex-wrap: wrap; }
+
+.element {
+  margin: 30px;
+  padding: 10px;
+  display: inline-block;
+  border-radius: 10px;
+  background-color: #f1f1f1; }
+  .dark .element {
+    background-color: #1d1f1f; }
+  .element .element__option {
+    transition: color 0.2s ease;
+    transition: background-color 0.2s ease;
+    text-align: center; }
+    .element .element__option a i {
+      transition: color 0.2s ease;
+      transition: background-color 0.2s ease;
+      cursor: hand;
+      width: 115px;
+      height: 115px;
+      line-height: 100px;
+      display: inline-block;
+      font-size: 100px;
+      color: rgba(96, 96, 96, 0.7); }
+      .element .element__option a i:hover {
+        color: rgba(96, 96, 96, 0.9); }
+        .dark .element .element__option a i:hover {
+          color: rgba(192, 192, 192, 0.9); }
+      .dark .element .element__option a i {
+        color: rgba(192, 192, 192, 0.5); }
+  .element .element__title {
+    transition: color 0.2s ease;
+    transition: background-color 0.2s ease;
+    font-weight: 900;
+    font-size: 18px;
+    text-align: center;
+    width: 100px; }
+
+.box-container #AddElementContainer {
+  border-color: #368e8c; }
+  .box-container #AddElementContainer span a i {
+    color: #368e8c; }
+    .box-container #AddElementContainer span a i:hover {
+      color: #196261; }
+      .dark .box-container #AddElementContainer span a i:hover {
+        color: #53bebb; }
+  .box-container #AddElementContainer .element__title {
+    color: #368e8c; }
 
 .box {
   margin: 30px;

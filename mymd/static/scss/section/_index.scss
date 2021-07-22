@@ -1,3 +1,15 @@
+.title {
+    margin: 10px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bolder;
+
+    //-> --- COLORS ---
+    text-decoration: underline  3px solid $main-color-dark;
+    // -> ---
+}
+
+
 p {
     font-size: 17px;
     margin: 10px;

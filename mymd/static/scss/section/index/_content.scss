@@ -1,0 +1,91 @@
+.box-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.element {
+    margin: 30px;
+    padding: 10px;
+    display: inline-block;
+    border-radius: 10px;
+
+    //-> --- COLORS ---
+    background-color: $box-color;
+    .dark & {
+        background-color: $box-color-dark;
+    }
+    // -> ---
+
+    
+    $size: 100px;
+    .element__option{
+        @include transitionElement();
+        text-align: center;
+
+        a{
+            i{
+                @include transitionElement();
+                
+                cursor: hand;
+
+                width: $size + 15px;
+                height: $size + 15px;
+                line-height: $size;
+                display: inline-block;
+                font-size: $size;
+                
+                //-> --- COLORS ---
+                color: transparentize($gray-color-dark, 0.3);
+                &:hover {
+                    color: transparentize($gray-color-dark, 0.1);
+                    .dark & {
+                            color: transparentize($gray-color, 0.1)
+                    }
+                }
+                .dark &{
+                    color: transparentize($gray-color, 0.5);
+                }
+                // -> ---
+
+            }
+        }
+    }
+
+        .element__title{
+            @include transitionElement();
+            font-weight: 900;
+            font-size: 18px;
+            text-align: center;
+            width: $size;
+        }
+    }
+
+
+.box-container {
+    #AddElementContainer {
+        border-color: $green-color;
+
+        span {
+            a {
+                i{   
+
+                    //-> --- COLORS ---
+                    color: $green-color;
+                    &:hover {
+                        color: $green-color-dark;
+                        .dark &{
+                            color: lighten($green-color, 15);
+                        }
+                    }
+                    // -> ---
+                }}
+        }
+        .element__title {
+            //-> --- COLORS ---
+            color: $green-color;
+            // -> ---
+        }
+    }
+
+}

@@ -22,6 +22,11 @@ button, input[type=submit], .button{
     background-color: $white-color;
     color: $black-color-dark;
 
+    .dark & {
+        background-color: $input-color-dark;
+        color: $white-color;
+    }
+
     &.red{
         @include buttonColors($red-color, $white-color, 19, -8);
     }

@@ -1,0 +1,46 @@
+.optionList {
+    margin: 0px;
+    padding: 0px;
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+
+        // -> --- COLORS --- 
+        background-color: $purple-color;
+        .dark & {
+            background-color: $purple-color-dark;
+        }
+        // -> ---
+        li{
+            padding: 4px;
+            margin: 3px;
+            display: inline-block;
+            button {
+                font-size: 20px;
+            }
+            input {
+                height: 80%;
+                width: 80px;
+            }
+        }
+    }
+}
+
+.document{
+    text-align: center;
+    .document-paper {
+        display: inline-block;
+        width: 80vw;
+        margin: 30px;
+        padding: 20px;
+        border-radius: 20px;
+        text-align: left;
+        
+        // -> --- COLORS ---
+        background-color: transparentize($white-color, 0.1);
+            .dark & {
+            background-color: transparentize($white-color, 0.85);
+        }
+        // -> --- 
+    }
+}

@@ -1,4 +1,6 @@
+
 from .forms import userRegisterForm
+from docs.models import docCloud
 from django.http import request
 from django.views.generic import View, TemplateView
 from django.shortcuts import render, redirect
@@ -23,6 +25,8 @@ class register(TemplateView):
 
         if form.is_valid():
             form.save()
+            author = form.cleaned_data["username"]
+            docCloud.objects.create(author = author)
             return redirect("index")
         else:
             return redirect("register")

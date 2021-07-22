@@ -49,9 +49,9 @@ export default class Model {
                     console.error(error);
                     return error;
                 }
-                Object.assign(storageValue, values);
-                this.save();
             }
+            Object.assign(storageValue, values);
+            this.save();
 
             return null;
         } else if (method.toUpperCase() === "ASSIGN") {

@@ -21,6 +21,9 @@ from .views import *
 
 app_name = "docs"
 urlpatterns = [
-    path('view/', docView.as_view(), name="docView")
+    path('view/', docView.as_view(), name="docView"),
+
+    path("download/", download.as_view(), name="download"),
+    path("upload/", upload.as_view(), name="upload")
 
 ]

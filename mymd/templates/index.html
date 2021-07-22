@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <script src="https://kit.fontawesome.com/215f3e6a22.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Index</title>
 </head>
 <body>
@@ -24,6 +25,29 @@
                     </span>
                     <div class="element__title">Add element</div>
                 </div>
+
+
+                <div id="downloadElementsContainer" class="element">
+                    <span class="element__option">
+                        <a id="downloadElementsOption">
+                            {% csrf_token %}
+                            <i class="fas fa-cloud-download-alt"></i>
+                        </a>
+                    </span>
+                    <div class="element__title">Download elements</div>
+                </div>
+
+                <div id="uploadElementsContainer" class="element">
+                    <span class="element__option">
+                        <a id="uploadElementsOption">
+                            {% csrf_token %}
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </a>
+                    </span>
+                    <div class="element__title">Upload elements</div>
+                </div>
+
+
             </div>
 
         </div>

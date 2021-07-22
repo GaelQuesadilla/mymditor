@@ -1,6 +1,7 @@
 export default class Views {
     constructor() {
         this.model = null;
+        this.ajax = null;
         this.urls = null;
         this.content = document.querySelector("#content");
         this.docsContainer = document.querySelector("#docsContainer");
@@ -28,6 +29,30 @@ export default class Views {
                     }
                 }
             });
+
+        document
+            .querySelector("#downloadElementsContainer span a i")
+            .addEventListener("click", () => {
+                const csrf_token = document.querySelector(
+                    "#downloadElementsContainer span a input[name=csrfmiddlewaretoken]"
+                ).value;
+                this.downloadElements(["documents"], csrf_token);
+            });
+
+        document
+            .querySelector("#uploadElementsContainer span a i")
+            .addEventListener("click", () => {
+                const csrf_token = document.querySelector(
+                    "#uploadElementsContainer span a input[name=csrfmiddlewaretoken]"
+                ).value;
+                const dir = ["documents"];
+                this.uploadElements(
+                    dir,
+                    { value: this.model.getElement(dir) },
+                    csrf_token
+                );
+            });
+
         //-> --- Open and close a add doc modal
         document
             .querySelector("#closeDocModal")
@@ -49,6 +74,32 @@ export default class Views {
 
     setUrls(urls) {
         this.urls = urls;
+    }
+
+    setAjax(ajax) {
+        this.ajax = ajax;
+    }
+
+    downloadElements(dir, csrf_token) {
+        console.log("Download", csrf_token);
+
+        const downloadPromise = this.ajax.download(dir, csrf_token);
+        //Wait for promise response
+        downloadPromise.then((response) => {
+            this.model.updateElement(["documents"], response.data, "assign");
+
+            this.render();
+        });
+    }
+
+    uploadElements(dir, data, csrf_token) {
+        console.log("Upload", csrf_token);
+        console.group(dir, data);
+        const uploadPromise = this.ajax.upload(dir, data, csrf_token);
+        //Wait for promise response
+        uploadPromise.then((response) => {
+            console.log(response.data);
+        });
     }
 
     // This function only add an element on the view
@@ -88,6 +139,7 @@ export default class Views {
     }
 
     render() {
+        this.docsContainer.innerHTML = "";
         const docs = this.model.getElement(["documents", "value"]);
         for (let values in docs) {
             let element = {};
