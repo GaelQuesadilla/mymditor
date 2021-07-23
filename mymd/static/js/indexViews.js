@@ -5,7 +5,8 @@ export default class Views {
         this.urls = null;
         this.content = document.querySelector("#content");
         this.docsContainer = document.querySelector("#docsContainer");
-        this.addDocModal = document.querySelector("#addDocModal"); // this modal displays for add an element
+        // this modal displays for add an element
+        this.addDocModal = document.querySelector("#addDocModal"); 
 
         this.docData = null;
 
@@ -30,6 +31,7 @@ export default class Views {
                 }
             });
 
+        // This function will get csrf_token and use "downloadElements()" method
         document
             .querySelector("#downloadElementsContainer span a i")
             .addEventListener("click", () => {
@@ -39,6 +41,7 @@ export default class Views {
                 this.downloadElements(["documents"], csrf_token);
             });
 
+        // This function will get csrf_token and values, then use "uploadElements()" method
         document
             .querySelector("#uploadElementsContainer span a i")
             .addEventListener("click", () => {

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <script src="https://kit.fontawesome.com/215f3e6a22.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Documento</title>
 </head>
 <body>
@@ -63,12 +64,18 @@
                 </li>
 
                 <li>
+                    <button class="button red" id="deleteButton">Delete</button>
+                </li>
+
+                <li>
                     <button id="btnUpload" class="button normal">Upload</button>
                 </li>
 
                 <li>
                     <button id="btnDownload" class="button normal">Download</button>
                 </li>
+
+                {% csrf_token %}
 
 
             </ul>

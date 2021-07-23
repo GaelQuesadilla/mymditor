@@ -3,6 +3,7 @@ import Model from "./model.js";
 import Urls from "./urls.js";
 import View from "./docView.js";
 import Edit from "./docEdit.js";
+import Ajax from "./ajaxModel.js";
 
 document.addEventListener("DOMContentLoaded", function () {
     console.log("Dom content loaded");
@@ -11,11 +12,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const urls = new Urls();
     const view = new View();
     const edit = new Edit();
+    const ajax = new Ajax
 
     switchMode.setModel(model);
 
     view.setModel(model);
     view.setUrls(urls);
+    view.setAjax(ajax)
 
     view.render();
 });

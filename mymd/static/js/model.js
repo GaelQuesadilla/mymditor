@@ -67,6 +67,12 @@ export default class Model {
         return null;
     }
 
+    deleteElement(dir) {
+        let storageValue = this.getElement(dir.slice(0,dir.length-1));
+        console.group(delete(storageValue[dir[dir.length-1]]), storageValue)
+        this.save()
+    }
+
     save() {
         localStorage.setItem("mymdstorage", JSON.stringify(this.storage));
     }

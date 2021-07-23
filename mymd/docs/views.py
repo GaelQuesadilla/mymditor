@@ -38,7 +38,6 @@ class download(View):
         for element in dataDir:
             data = data[element]
 
-        
         return JsonResponse({"data":data}, status=200)
         
         
@@ -71,8 +70,15 @@ class upload(View):
 
         
         for element in dataDir:
-            data = data[element]
-        
+            try:
+                data = data[element]
+
+            
+            except KeyError:
+                # ? if keyWord dont exist create it with void dict 
+                data[element] = {}
+                data = data[element]
+        print(f"\ncloudData = {cloudData}\n\ndata = {data}\n\ndataValue = {dataValue}\n")
         data |= dataValue
 
         cloud.data = json.dumps(cloudData)
