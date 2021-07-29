@@ -29,12 +29,18 @@ class download(View):
         if not form.is_valid():
             return HttpResponseNotAllowed("POST")
 
+
+        # dataDir must be an array with keys
+        # author must be the username
         dataDir = json.loads(form.cleaned_data["dataDir"])
         author = request.user.username
 
+        # cloud is an object in database 
+        # cloudData is an dictionary with values
         cloud = docCloud.objects.get(author=author)
         data = json.loads(cloud.data)
 
+        # go to element using dataDir values as keys
         for element in dataDir:
             data = data[element]
 
@@ -55,32 +61,33 @@ class upload(View):
         if not form.is_valid():
             return HttpResponseNotAllowed("POST")
 
-        # ? dataDir must be an array with keys
-        # ? dataValue must be a dict with user local values
-        # ? author must be the username
+
+        # dataDir must be an array with keys
+        # dataValue must be a dict with user local values
+        # author must be the username
         dataDir = json.loads(form.cleaned_data.get("dataDir"))
         dataValue = json.loads(form.cleaned_data.get("values"))["value"]
         author = request.user.username
 
-        # ? cloud is an object in database 
-        # ? cloudData is an dictionary with values
+        # cloud is an object in database 
+        # cloudData is an dictionary with values
         cloud = docCloud.objects.get(author=author)
         cloudData  = json.loads(cloud.data)
         data = cloudData
 
-        
+        # go to element using dataDir values as keys
         for element in dataDir:
             try:
                 data = data[element]
-
-            
             except KeyError:
-                # ? if keyWord dont exist create it with void dict 
+                # if keyWord dont exist create it with void dict 
                 data[element] = {}
                 data = data[element]
-        print(f"\ncloudData = {cloudData}\n\ndata = {data}\n\ndataValue = {dataValue}\n")
+
+        # Merge the values
         data |= dataValue
 
+        # Save the new values on database 
         cloud.data = json.dumps(cloudData)
         cloud.save()
 

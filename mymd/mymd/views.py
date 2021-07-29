@@ -25,8 +25,11 @@ class register(TemplateView):
 
         if form.is_valid():
             form.save()
+            
+            # Create the user cloud 
             author = form.cleaned_data["username"]
             docCloud.objects.create(author = author)
+
             return redirect("index")
         else:
             return redirect("register")

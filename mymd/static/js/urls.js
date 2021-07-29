@@ -4,6 +4,7 @@ export default class Urls {
         this.urlSelector = null;
     }
 
+    // Creates an url with variables
     createSearch(url, params) {
         var urlResult = "";
         if (url != null) {
@@ -27,6 +28,7 @@ export default class Urls {
         return urlResult;
     }
 
+    // Return an URLSearchParams class with url values 
     getUrlParams() {
         if (this.urlSelector === null) {
             this.urlSelector = new URLSearchParams(this.url);

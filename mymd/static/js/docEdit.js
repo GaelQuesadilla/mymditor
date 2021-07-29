@@ -1,6 +1,8 @@
 export default class Edit {
     constructor() {
         this.doc = document.querySelector("#doc");
+
+        // The nexts variables will select all buttons required to edit the document
         this.btnBold = document.querySelector("#btnBold");
         this.btnItalic = document.querySelector("#btnItalic");
         this.btnUnderline = document.querySelector("#btnUnderline");
@@ -12,6 +14,8 @@ export default class Edit {
         this.init();
     }
 
+    // the next method create the required event listener to buttons
+    // commandId will be saved on the button datatype atribute
     init() {
         this.btnBold.addEventListener("click", () => {
             document.execCommand(

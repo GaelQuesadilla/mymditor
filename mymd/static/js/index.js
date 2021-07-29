@@ -5,6 +5,7 @@ import Urls from "./urls.js";
 import Ajax from "./ajaxModel.js";
 
 document.addEventListener("DOMContentLoaded", function () {
+    // Set all requeriments of "/" view
     console.log("Dom content loaded");
     const switchMode = new Switch_mode();
     const model = new Model();

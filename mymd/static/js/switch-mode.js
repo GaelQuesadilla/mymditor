@@ -3,6 +3,7 @@ export default class Switch_mode {
         this.model = null;
         this.nigthMode = false;
         this.btnMode = document.querySelector("#switch-mode");
+        //This function will update the view, change the swich view and save the bool value on localstorage
         this.btnMode.addEventListener("click", () => {
             this.updateMode();
             this.changeSwitch();
@@ -20,6 +21,7 @@ export default class Switch_mode {
         this.changeMode();
     }
 
+    // Changes the swich appearance
     changeSwitch() {
         if (this.nigthMode === true) {
             this.btnMode.classList.add("active");
@@ -28,6 +30,7 @@ export default class Switch_mode {
         }
     }
 
+    // Updates the view mode
     changeMode() {
         if (this.nigthMode === true) {
             document.body.classList.add("dark");
@@ -35,6 +38,8 @@ export default class Switch_mode {
             document.body.classList.remove("dark");
         }
     }
+
+    // Updates the value from local storage
     updateMode() {
         this.nigthMode = !this.nigthMode;
         this.model.updateElement(

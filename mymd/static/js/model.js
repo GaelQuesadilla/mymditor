@@ -17,6 +17,8 @@ export default class Model {
             };
         }
     }
+
+    // This method return all local storage values
     getStorage() {
         return this.storage;
     }
@@ -31,11 +33,10 @@ export default class Model {
         return storageValue;
     }
 
-    // A function that append or updates an element
-    // values variables must be an array with keys(string or ints) of the element to update
-    // method = "push" append values, method = "assign" assign values
+    // This method append or updates an element
+    // values variable must be an array with keys(string or ints) of the element to update
+    // method="push" check id element exist, if the element exist return error, method = "assign" assign values
     updateElement(index, values, method = "push") {
-        //? For key in index array go to requested object
 
         const storageValue = this.getElement(index);
 
@@ -52,27 +53,30 @@ export default class Model {
             }
             Object.assign(storageValue, values);
             this.save();
-
             return null;
+
         } else if (method.toUpperCase() === "ASSIGN") {
             Object.assign(storageValue, values);
             this.save();
+
         } else {
             const error = "INVALID LOCAL UPDATE METHOD";
             console.error(error, method.toUpperCase);
             return error;
         }
 
-        this.save();
         return null;
     }
 
+    // This method delete the specified element in dir array
     deleteElement(dir) {
         let storageValue = this.getElement(dir.slice(0,dir.length-1));
-        console.group(delete(storageValue[dir[dir.length-1]]), storageValue)
+        const deleteOutput = delete(storageValue[dir[dir.length-1]])
         this.save()
+        return deleteOutput
     }
 
+    // this method save all changes in localstorage
     save() {
         localStorage.setItem("mymdstorage", JSON.stringify(this.storage));
     }

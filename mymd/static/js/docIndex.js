@@ -6,7 +6,7 @@ import Edit from "./docEdit.js";
 import Ajax from "./ajaxModel.js";
 
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("Dom content loaded");
+    // Set all requeriments of "/docs/view" view
     const switchMode = new Switch_mode();
     const model = new Model();
     const urls = new Urls();
