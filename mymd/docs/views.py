@@ -42,7 +42,8 @@ class download(View):
 
         # go to element using dataDir values as keys
         for element in dataDir:
-            data = data[element]
+            if element != "":
+                data = data[element]
 
         return JsonResponse({"data":data}, status=200)
         
@@ -77,18 +78,19 @@ class upload(View):
 
         # go to element using dataDir values as keys
         for element in dataDir:
-            try:
-                data = data[element]
-            except KeyError:
-                # if keyWord dont exist create it with void dict 
-                data[element] = {}
-                data = data[element]
-
+            if element != "":
+                try:
+                    data = data[element]
+                except KeyError:
+                    # if keyWord dont exist create it with void dict 
+                    data[element] = {}
+                    data = data[element]
+                    
         # Merge the values
         data |= dataValue
 
         # Save the new values on database 
-        cloud.data = json.dumps(cloudData)
+        cloud.data = json.dumps(cloudData, indent=4)
         cloud.save()
 
         

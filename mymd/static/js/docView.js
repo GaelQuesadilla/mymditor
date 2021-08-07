@@ -4,12 +4,12 @@ export default class View {
         this.urls = null;
         this.ajax = null;
         this.doc = {};
-        
+
         // this.document should be select a div element that will be contain all document values
         this.document = document.querySelector("#doc");
 
         this.saveButton = document.querySelector("#saveButton");
-        // this function will save an specified element in the local database 
+        // this function will save an specified element in the local database
         this.saveButton.addEventListener("click", () => {
             this.save();
         });
@@ -20,22 +20,18 @@ export default class View {
             this.delete();
         });
 
-        // This variable should contain the csrf_token value 
+        // This variable should contain the csrf_token value
         this.csrf_token = document.querySelector(
             ".optionList ul input[name=csrfmiddlewaretoken]"
         ).value;
 
         this.downloadButton = document.querySelector("#btnDownload");
         // This function will download an specified element from server's database and then update the local element
-        this.downloadButton.addEventListener("click", () => {
-            this.download();
-        });
+        this.downloadButton.addEventListener("click", () => this.download());
 
         this.uploadButton = document.querySelector("#btnUpload");
         // This function will upload an specified element from server's database
-        this.uploadButton.addEventListener("click", () => {
-            this.upload();
-        });
+        this.uploadButton.addEventListener("click", () => this.upload());
     }
 
     setModel(model) {
@@ -50,15 +46,17 @@ export default class View {
 
         // save important values in this.doc
         const title = params.get("docName");
+        const index = ["documents", "value", title];
 
-        const value = this.model.getElement(["documents", "value", title]);
+        let doc = {
+            title,
+            index,
+            getDoc: () => this.model.getElement(["documents", "value", title]),
+        };
 
-        let document = {};
-        document[title] = { value: value.value };
+        Object.assign(this.doc, doc);
 
-        Object.assign(this.doc, { document }, { title: title });
-
-        // SaVE URLSearchParams() class from params const in this.url
+        // Save URLSearchParams() class from params const in this.url
         this.url = {
             params,
         };
@@ -70,7 +68,7 @@ export default class View {
 
     // Replace this.document value with the local storage value
     updateContent() {
-        this.document.innerHTML = this.doc.document[this.doc.title].value;
+        this.document.innerHTML = this.doc.getDoc().value;
     }
 
     // Update the specified element in local storage
@@ -82,36 +80,34 @@ export default class View {
         this.model.updateElement(index, values, "assign");
     }
 
-    // Delete the element from local storage 
+    // Delete the element from local storage
     delete() {
-        const index = ["documents", "value", this.doc.title];
-        this.model.deleteElement(index);
-        window.location.href = "http://localhost:8000/";
+        this.model.deleteElement(this.doc.index);
+        window.location.href = `${window.location.protocol}//${window.location.host}/`
     }
 
     // This method should post and wait for a response with element data from servers database and update the view of the document
     download() {
-        const dir = ["documents", "value", this.doc.title];
-        const downloadPromise = this.ajax.download(dir, this.csrf_token);
+        const downloadPromise = this.ajax.download(
+            this.doc.index,
+            this.csrf_token
+        );
 
-        downloadPromise.then((response) => {
-            // Replace document value with ajax response
-            this.document.innerHTML = response.data.value;
-        });
+        // Replace document value with ajax response
+        downloadPromise.then(
+            (response) => (this.document.innerHTML = response.data.value)
+        );
     }
 
     // This method should post the values document and wait for a response to save the document data in local storage
     upload() {
-        const dir = ["documents", "value", this.doc.title];
         const uploadPromise = this.ajax.upload(
-            dir,
-            { value: {value: this.document.innerHTML} },
+            this.doc.index,
+            { value: { value: this.document.innerHTML } },
             this.csrf_token
         );
 
-        uploadPromise.then((response) => {
-            this.save()
-        });
+        uploadPromise.then(() => this.save());
     }
 
     // This method shuld be used when the dom content load

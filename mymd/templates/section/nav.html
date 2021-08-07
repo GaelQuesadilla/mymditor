@@ -20,8 +20,9 @@
             <p>
                 {{username}}
             </p>
+            
             <a href="{% url 'logout' %}">
-                <button class="button RED">LOGOUT</button>
+                <button class="button red" id="logoutbtn">LOGOUT</button>
             </a>
             {% endif %}
             {% if not login %}

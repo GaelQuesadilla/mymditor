@@ -3,74 +3,65 @@ export default class Views {
         this.model = null;
         this.ajax = null;
         this.urls = null;
+        this.switchMode = null
+
         this.content = document.querySelector("#content");
         this.docsContainer = document.querySelector("#docsContainer");
+
         // this modal displays for add an element
-        this.addDocModal = document.querySelector("#addDocModal"); 
+        this.addDocModal = document.querySelector("#addDocModal");
+        // This variable should save csrf_token value
+        this.csrf_token = document.querySelector(
+            "input[name=csrfmiddlewaretoken]"
+        ).value;
 
-        this.docData = null;
-
+        this.addDocBtn = document.querySelector("#addDocConfirmation");
         //  This function try to add an element in local storage, after the element will be added on the view
-        document
-            .querySelector("#addDocConfirmation")
-            .addEventListener("click", () => {
-                const values = this.getValues();
-                if (values == null || !values) {
-                    console.error("Invalid values");
-                } else {
-                    const addedDoc = this.model.updateElement(
-                        ["documents", "value"],
-                        values,
-                        "push"
-                    );
-                    // model.updateElement() return null when errors doesnt happen
-                    if (addedDoc == null) {
-                        this.addElement(values);
-                    }
-                }
-            });
-
-
-        // This function will get csrf_token and use "downloadElements()" method
-        document
-            .querySelector("#downloadElementsContainer span a i")
-            .addEventListener("click", () => {
-                const csrf_token = document.querySelector(
-                    "#downloadElementsContainer span a input[name=csrfmiddlewaretoken]"
-                ).value;
-                this.downloadElements(["documents"], csrf_token);
-            });
-
-        // This function will get csrf_token and values, then use "uploadElements()" method
-        document
-            .querySelector("#uploadElementsContainer span a i")
-            .addEventListener("click", () => {
-                const csrf_token = document.querySelector(
-                    "#uploadElementsContainer span a input[name=csrfmiddlewaretoken]"
-                ).value;
-                const dir = ["documents"];
-                this.uploadElements(
-                    dir,
-                    { value: this.model.getElement(dir) },
-                    csrf_token
+        this.addDocBtn.addEventListener("click", () => {
+            const values = this.getValues();
+            if (values == null || Object.keys(values)[0].length <= 0) {
+                console.error("Invalid values");
+            } else {
+                const addedDoc = this.model.updateElement(
+                    ["documents", "value"],
+                    values,
+                    "push"
                 );
-            });
-        
-        //  This function will close the add doc modal 
+                // model.updateElement() return null when errors doesnt happen
+                if (addedDoc == null) {
+                    this.addElement(values);
+                }
+            }
+        });
+
+        this.downloadBtn = document.querySelector(
+            "#downloadElementsContainer span a i"
+        );
+        // This function will get csrf_token and use "downloadElements()" method
+        this.downloadBtn.addEventListener("click", () =>
+            this.downloadElements([""])
+        );
+
+        this.uploadBtn = document.querySelector(
+            "#uploadElementsContainer span a i"
+        );
+        // This function will get csrf_token and values, then use "uploadElements()" method
+        this.uploadBtn.addEventListener("click", () =>
+            this.uploadElements([""], {
+                value: this.model.getElement([""]),
+            })
+        );
+
+        //  This function will close the add doc modal
         document
             .querySelector("#closeDocModal")
-            .addEventListener("click", () => {
-                this.closeModal(this.addDocModal);
-            });
+            .addEventListener("click", () => this.closeModal(this.addDocModal));
 
-        //  This function will open the add doc modal 
+        //  This function will open the add doc modal
         document
             .querySelector("#addElementContainer span a i")
-            .addEventListener("click", () => {
-                this.openModal(this.addDocModal);
-            });
+            .addEventListener("click", () => this.openModal(this.addDocModal));
     }
-
 
     setModel(model) {
         this.model = model;
@@ -84,30 +75,32 @@ export default class Views {
         this.ajax = ajax;
     }
 
+    setSwitchMode(switchMode){
+        this.switchMode = switchMode 
+    }
+
     // This method will download all the user documents from server
     // dir should be an array with keys and csrf token should be an string with csrf_token value
-    downloadElements(dir, csrf_token) {
-
-        const downloadPromise = this.ajax.download(dir, csrf_token);
+    downloadElements(index) {
+        const downloadPromise = this.ajax.download(index, this.csrf_token);
         // Wait for promise response and then update documents and render
         downloadPromise.then((response) => {
-            this.model.updateElement(["documents"], response.data, "assign");
-
+            this.model.updateElement([""], response.data, "assign");
+            this.switchMode.changeMode();
+            this.switchMode.changeSwitch();
             this.render();
         });
     }
 
     // This method will upload and update all the user documents from server
     // dir should be an array with keys and csrf token should be an string with csrf_token value
-    uploadElements(dir, data, csrf_token) {
+    uploadElements(index, data, csrf_token) {
         console.log("Upload", csrf_token);
-        console.group(dir, data);
-        const uploadPromise = this.ajax.upload(dir, data, csrf_token);
+        console.log(index, data);
+        const uploadPromise = this.ajax.upload(index, data, this.csrf_token);
 
         //Wait for promise response and then print the response
-        uploadPromise.then((response) => {
-            console.log(response.data)
-        });
+        uploadPromise.then((response) => console.log(response.data));
     }
 
     // This method only add an element on the view with values specified on the values object

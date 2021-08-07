@@ -16,14 +16,14 @@ export default class Switch_mode {
     setModel(model) {
         this.model = model;
 
-        this.nigthMode = this.model.getElement(["style"]).nigthMode;
+        this.nigthMode = () => this.model.getElement(["style"]).nigthMode;
         this.changeSwitch();
         this.changeMode();
     }
 
     // Changes the swich appearance
     changeSwitch() {
-        if (this.nigthMode === true) {
+        if (this.nigthMode() === true) {
             this.btnMode.classList.add("active");
         } else {
             this.btnMode.classList.remove("active");
@@ -32,7 +32,7 @@ export default class Switch_mode {
 
     // Updates the view mode
     changeMode() {
-        if (this.nigthMode === true) {
+        if (this.nigthMode() === true) {
             document.body.classList.add("dark");
         } else {
             document.body.classList.remove("dark");
@@ -41,10 +41,9 @@ export default class Switch_mode {
 
     // Updates the value from local storage
     updateMode() {
-        this.nigthMode = !this.nigthMode;
         this.model.updateElement(
             ["style"],
-            { nigthMode: this.nigthMode },
+            { nigthMode: !this.nigthMode() },
             "assign"
         );
     }

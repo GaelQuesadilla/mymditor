@@ -5,6 +5,7 @@ import View from "./docView.js";
 import Edit from "./docEdit.js";
 import Ajax from "./ajaxModel.js";
 
+
 document.addEventListener("DOMContentLoaded", function () {
     // Set all requeriments of "/docs/view" view
     const switchMode = new Switch_mode();
@@ -12,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const urls = new Urls();
     const view = new View();
     const edit = new Edit();
-    const ajax = new Ajax
+    const ajax = new Ajax();
 
     switchMode.setModel(model);
 

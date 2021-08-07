@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
     views.setModel(model);
     views.setUrls(urls);
     views.setAjax(ajax);
+    views.setSwitchMode(switchMode)
 
     views.render();
 });

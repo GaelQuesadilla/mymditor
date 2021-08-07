@@ -1,5 +1,8 @@
+
+private.json
 .vscode/
 
 # Django
 **/__pycache__/
 **/migrations/
+

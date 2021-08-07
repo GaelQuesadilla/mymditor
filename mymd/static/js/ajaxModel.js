@@ -13,13 +13,10 @@ export default class Ajax {
                 url: `http://${window.location.host}/${url}`,
                 type: "POST",
                 data: data,
-                beforeSend: function () {},
-                success: (response) => {
-                    resolve(response); // Resolve promise and when success
-                },
-                error: function (err) {
-                    reject(err); // Reject the promise and go to catch()
-                },
+                beforeSend: () =>{},
+                success: (response) => resolve(response), // Resolve promise and when success 
+                error: (err) => reject(err), // Reject the promise and go to catch()
+                
             });
         });
         //Return the download promise

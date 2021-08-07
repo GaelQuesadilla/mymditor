@@ -17,45 +17,45 @@ export default class Edit {
     // the next method create the required event listener to buttons
     // commandId will be saved on the button datatype atribute
     init() {
-        this.btnBold.addEventListener("click", () => {
+        this.btnBold.addEventListener("click", () =>
             document.execCommand(
                 this.btnBold.getAttribute("datatype", false, null)
-            );
-        });
+            )
+        );
 
-        this.btnItalic.addEventListener("click", () => {
+        this.btnItalic.addEventListener("click", () =>
             document.execCommand(
                 this.btnItalic.getAttribute("datatype", false, null)
-            );
-        });
+            )
+        );
 
-        this.btnUnderline.addEventListener("click", () => {
+        this.btnUnderline.addEventListener("click", () =>
             document.execCommand(
                 this.btnUnderline.getAttribute("datatype", false, null)
-            );
-        });
+            )
+        );
 
-        this.btnCenter.addEventListener("click", () => {
+        this.btnCenter.addEventListener("click", () =>
             document.execCommand(
                 this.btnCenter.getAttribute("datatype"),
                 false,
                 null
-            );
-        });
+            )
+        );
 
-        this.btnLeft.addEventListener("click", () => {
+        this.btnLeft.addEventListener("click", () =>
             document.execCommand(
                 this.btnLeft.getAttribute("datatype"),
                 false,
                 null
-            );
-        });
+            )
+        );
 
-        this.btnUnonderedList.addEventListener("click", () => {
+        this.btnUnonderedList.addEventListener("click", () =>
             document.execCommand(
                 this.btnUnonderedList.getAttribute("datatype", false, null)
-            );
-        });
+            )
+        );
 
         this.btnFontSize.addEventListener("click", () => {
             const fontSize = document.querySelector("#inputFontSize").value;
