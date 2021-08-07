@@ -75,17 +75,10 @@ WSGI_APPLICATION = 'mymd.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    # WRITE YOUR DATABASE VALUES HERE
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mymd_db',
-        "USER": "root",
-        "PASSWORD": "",
-        "HOST": "localhost",
-        "PORT": 3306
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
-
-
 }
 
 
