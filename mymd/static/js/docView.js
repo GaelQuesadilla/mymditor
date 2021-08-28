@@ -1,24 +1,26 @@
+import Alerts from "./alerts.js";
+
 export default class View {
     constructor() {
         this.model = null;
         this.urls = null;
         this.ajax = null;
         this.doc = {};
+        this.alerts = new Alerts()
 
         // this.document should be select a div element that will be contain all document values
         this.document = document.querySelector("#doc");
 
         this.saveButton = document.querySelector("#saveButton");
         // this function will save an specified element in the local database
-        this.saveButton.addEventListener("click", () => {
-            this.save();
-        });
+        this.saveButton.addEventListener("click", () => this.save());
+
+        // This variable should contain the container of the alerts
+        this.pageAlerts = document.querySelector("#pageAlerts")
 
         this.deleteButton = document.querySelector("#deleteButton");
         // This function will delete an specified element in the local database
-        this.deleteButton.addEventListener("click", () => {
-            this.delete();
-        });
+        this.deleteButton.addEventListener("click", () => this.delete());
 
         // This variable should contain the csrf_token value
         this.csrf_token = document.querySelector(
@@ -38,7 +40,7 @@ export default class View {
         this.model = model;
     }
 
-    // This method will save urls class and then save important calues
+    // This method will save urls class and then save important values
     setUrls(urls) {
         this.urls = urls;
 
@@ -83,7 +85,7 @@ export default class View {
     // Delete the element from local storage
     delete() {
         this.model.deleteElement(this.doc.index);
-        window.location.href = `${window.location.protocol}//${window.location.host}/`
+        window.location.href = `${window.location.protocol}//${window.location.host}/`;
     }
 
     // This method should post and wait for a response with element data from servers database and update the view of the document
@@ -92,11 +94,24 @@ export default class View {
             this.doc.index,
             this.csrf_token
         );
+        // Alert
+        this.alerts.pageAlert(
+            this.pageAlerts,
+            "<p>Downloading</p><span class='spinner'></span>",
+            "alert white",
+            downloadPromise
+        );
 
         // Replace document value with ajax response
-        downloadPromise.then(
-            (response) => (this.document.innerHTML = response.data.value)
-        );
+        downloadPromise.then((response) => {
+            this.document.innerHTML = response.data.value;
+            // Alert
+            this.alerts.pageAlert(
+                this.pageAlerts,
+                "<p>Downloaded</p>",
+                "alert white"
+            )
+        });
     }
 
     // This method should post the values document and wait for a response to save the document data in local storage
@@ -107,10 +122,24 @@ export default class View {
             this.csrf_token
         );
 
-        uploadPromise.then(() => this.save());
+        this.alerts.pageAlert(
+            this.pageAlerts,
+            "<p>Updating</p><span class='spinner'></span>",
+            "alert white",
+            uploadPromise
+        );
+
+        uploadPromise.then(() => {
+            this.save();
+            this.alerts.pageAlert(
+                this.pageAlerts,
+                "<p>Updated</p>",
+                "alert white"
+            );
+        });
     }
 
-    // This method shuld be used when the dom content load
+    // This method should be used when the dom content load
     // Only update the content of the view
     render() {
         this.updateContent();

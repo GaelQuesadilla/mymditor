@@ -7,7 +7,7 @@ import Ajax from "./ajaxModel.js";
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    // Set all requeriments of "/docs/view" view
+    // Set all requirements of "/docs/view" view
     const switchMode = new Switch_mode();
     const model = new Model();
     const urls = new Urls();

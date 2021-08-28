@@ -51,13 +51,13 @@ my project doesn't have many functions so its easy to use
 
 ---
 
-## HOW CONFIGURE THE ENVIROMENT? 
+## HOW CONFIGURE THE ENVIRONMENT? 
 
 Just do the following steps:
 
-1. Config your virtual enviroment
+1. Config your virtual environment
 
-    + Ejecute the nexts commands
+    + Execute the next's commands
         ```cmd
         pip install pipenv
         pipenv shell
@@ -72,16 +72,11 @@ Just do the following steps:
     + Change database settings in line 77      
         ```python
             DATABASES = {
-            # WRITE YOUR DATABASE VALUES HERE
                 'default': {
-                    'ENGINE': 'django.db.backends.mysql',
-                    'NAME': 'mymd_db',
-                    'USER': 'root',
-                    'PASSWORD': '',
-                    'HOST': 'localhost',
-                    'PORT': 3306,
-                } 
-            } 
+                'ENGINE': 'django.db.backends.sqlite3',
+                'NAME': BASE_DIR / 'db.sqlite3',
+                }
+            }
         ```
 
     + Make migrations 
@@ -119,7 +114,7 @@ Ok, i don't know what should i write here, but i'll write some annotations here
                 import Model from "./model.js";
 
                 document.addEventListener("DOMContentLoaded", function () {
-                    // Set all requeriments for a basic view
+                    // Set all requirements for a basic view
 
                     console.log("Dom content loaded");
                     const switchMode = new Switch_mode();
@@ -152,8 +147,12 @@ Ok, i don't know what should i write here, but i'll write some annotations here
                 * ### ajaxModel.js
                     ajaxModel.js is a model to **request post to update user cloud** data
 
+                * ### alerts.js
+                    alerts.js will manage all **alerts display**, these alerts will be:
+                        * When elements will be downloaded
+                        * When elements will be updated
+                        
                 * ***FOR MORE INFORMATION, I WRITTEN DETAILED INFORMATION ABOUT THE OPERATION OF THE SCRIPT IN THE COMMENTS OF EACH FILE***
-
 
     + **scss/**
 
@@ -177,19 +176,19 @@ Ok, i don't know what should i write here, but i'll write some annotations here
 
     + **css/**
 
-        + Just dont move anything, is better work css file with sass compiler 
+        + Just don't move anything, is better work css file with sass compiler 
 
 + **views**
 
     + docs/views.py
 
-        + docView recives 0 values and it will return the docView.html template
+        + docView receives 0 values and it will return the docView.html template
 
         + download post method receives 1 value, these will be:
 
             1. dataDir: A list that will contain the required keys to locate the element in user cloud data
 
-            *downlod post method just return a jsonResponse with the values of the requested data of the user cloud*
+            *download post method just return a jsonResponse with the values of the requested data of the user cloud*
 
         + upload post method receives 2 values, these will be:
 
@@ -203,7 +202,7 @@ Ok, i don't know what should i write here, but i'll write some annotations here
 
         + index get method just return index.html template
 
-        + register get method return a sign in form in register.html and get method recieves 3 values, that will be:
+        + register get method return a sign in form in register.html and get method receives 3 values, that will be:
 
             1. username as string
 
@@ -216,8 +215,8 @@ Ok, i don't know what should i write here, but i'll write some annotations here
 ---
 ## WHO AM I?
 
-I dont know, im only a preparatory student that likes to program
+I don't know, im only a preparatory student that likes to program
 
 *Im new into programming, i just do it as a hobby, please **don't take this project as a serious and useful project***
 
-My gmail is : **gaeldev032@gmail.com**
+My email is : **gaeldev032@gmail.com**

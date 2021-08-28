@@ -5,13 +5,165 @@
     font-weight: bolder;
 
     //-> --- COLORS ---
-    text-decoration: underline  3px solid $main-color-dark;
+    text-decoration: underline 3px solid $main-color-dark;
     // -> ---
 }
-
 
 p {
     font-size: 17px;
     margin: 10px;
     padding: 10px;
+}
+
+.spinner {
+    padding: 0;
+    margin: 0em 1em;
+    width: 1em;
+    height: 1.5em;
+    position: relative;
+    margin: 0 0.5em;
+    
+    top: 0.75em;
+    &::before {
+        content: "";
+        box-sizing: border-box;
+        position: absolute;
+        border-radius: 50%;
+        width: 1.5em;
+        height: 1.5em;
+        padding: 0px;
+        border: 0.2em solid #808080;
+        border-top-color: #3080a0;
+        animation: spinner 0.7s ease-in infinite;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+    }
+}
+
+.cross {
+    height: 1em;
+    position: relative;
+    cursor: pointer;
+    margin: 0em 1em;
+    top: 0.3em;
+    min-width: 2em;
+    max-width: 4em;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 1em;
+        height: 1em;
+        border-radius: 50%;
+        background-color: transparentize($gray-color-dark, 0.1);
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        width: 0.8em;
+        height: 0.2em;
+        top: 0.4em;
+        left: 0.1em;
+
+        background-color: $white-color;
+        color: $white-color;
+    }
+}
+
+.alert {
+    &.d-none {
+        display: none;
+    }
+    padding: 0.5em;
+    width: 100%;
+    border-radius: 0.25em;
+    display: block;
+    margin: 0px;
+    font-weight: 800;
+
+    &.green {
+        background-color: $green-color;
+        color: $white-color;
+    }
+    &.red {
+        background-color: $red-color;
+        color: $white-color;
+    }
+
+    &.white {
+        background-color: $white-color;
+        color: $black-color;
+    }
+}
+
+#pageAlerts {
+    font-size: 20px;
+    position: fixed;
+    top: 0px;
+    display: inline-block;
+    width: 30%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: left;
+
+    .alert {
+        transition: opacity 0.25s ease-in;
+        display: flex;
+        position: relative;
+        width: 100%;
+        right: 0;
+        left: 0;
+        margin: auto;
+        margin-top: 1em;
+
+        // -> --- COLORS ---
+        &.white {
+            background-color: #c0c0c5ee;
+            .dark & {
+                background-color: #d0d0d9ee;
+            }
+        }
+        // -> ---
+
+        p {
+            flex: 6;
+            color: #101010ff;
+            display: inline-block;
+            
+        }
+
+        .spinner {
+            flex: 3;
+            min-width: 1em;
+            max-width: 2em;
+            margin: 0em 1em;
+        }
+
+        .cross {
+            flex: 1;
+            min-width: 1em;
+            height: 1em;
+            margin: 0.1em;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+    }
+
+    
+}
+
+
+
+
+
+.d-none {
+    display: none;
 }

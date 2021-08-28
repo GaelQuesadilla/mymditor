@@ -8,7 +8,7 @@ export default class Model {
         if (!this.storage || this.storage.length < 1) {
             this.storage = {
                 style: {
-                    nigthMode: false,
+                    nightMode: true,
                 },
                 documents: {
                     value: {
@@ -24,8 +24,8 @@ export default class Model {
         return this.storage;
     }
 
-    // A function that returns an elemet from local storage
-    // index must be an array with keys(string or ints)
+    // A function that returns an element from local storage
+    // index must be an array with keys(string or integers)
     getElement(index) {
         var storageValue = this.storage;
 
@@ -50,7 +50,7 @@ export default class Model {
             for (let element in storageValue) {
                 console.log(element);
                 if (element === keys[0]) {
-                    const error = "ELEMENT ALREADY EXIST";
+                    const error = "Element already exist";
                     console.error(error);
                     return error;
                 }
@@ -64,7 +64,7 @@ export default class Model {
             this.save();
 
         } else {
-            const error = "INVALID LOCAL UPDATE METHOD";
+            const error = "Invalid local update method";
             console.error(error, method.toUpperCase);
             return error;
         }
@@ -80,7 +80,7 @@ export default class Model {
         return deleteOutput
     }
 
-    // this method save all changes in localstorage
+    // this method save all changes in local storage
     save() {
         localStorage.setItem(this.storageName, JSON.stringify(this.storage));
     }

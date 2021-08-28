@@ -10,6 +10,9 @@
     <title>Index</title>
 </head>
 <body>
+    <div id="pageAlerts">
+
+    </div>
     {% include 'section/nav.html' %}
     <article>
         <div id="content">
@@ -55,6 +58,13 @@
             <div class="modal d-none" id="addDocModal">
                 <div class="modal-content">
                     <h3 class="title">Add element</h3>
+
+                    <div class="alercontainer">
+                        <span class="alert d-none">
+                            null
+                        </span>
+                    </div>
+
                     <div class="input">
                         <div class="input-input">
                             <input type="text" id="addDocTitle">

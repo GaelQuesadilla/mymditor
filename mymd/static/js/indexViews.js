@@ -1,12 +1,16 @@
+import Alerts from "./alerts.js";
 export default class Views {
     constructor() {
         this.model = null;
         this.ajax = null;
         this.urls = null;
-        this.switchMode = null
+        this.switchMode = null;
+        this.alerts = new Alerts();
 
         this.content = document.querySelector("#content");
         this.docsContainer = document.querySelector("#docsContainer");
+        this.modalAlert = document.querySelector("#addDocModal .alert");
+        this.pageAlerts = document.querySelector("#pageAlerts");
 
         // this modal displays for add an element
         this.addDocModal = document.querySelector("#addDocModal");
@@ -20,16 +24,26 @@ export default class Views {
         this.addDocBtn.addEventListener("click", () => {
             const values = this.getValues();
             if (values == null || Object.keys(values)[0].length <= 0) {
-                console.error("Invalid values");
+                // -> Alert
+                this.modalAlert.classList = "alert red";
+                this.modalAlert.innerHTML = "Invalid values";
             } else {
                 const addedDoc = this.model.updateElement(
                     ["documents", "value"],
                     values,
                     "push"
                 );
-                // model.updateElement() return null when errors doesnt happen
+                // model.updateElement() return null when errors doesn't happen
                 if (addedDoc == null) {
                     this.addElement(values);
+
+                    // -> Alert
+                    this.modalAlert.classList = "alert green";
+                    this.modalAlert.innerHTML = "Element added";
+                } else {
+                    // -> Alert
+                    this.modalAlert.classList = "alert red";
+                    this.modalAlert.innerHTML = addedDoc;
                 }
             }
         });
@@ -61,6 +75,8 @@ export default class Views {
         document
             .querySelector("#addElementContainer span a i")
             .addEventListener("click", () => this.openModal(this.addDocModal));
+
+        console.log("a");
     }
 
     setModel(model) {
@@ -75,16 +91,30 @@ export default class Views {
         this.ajax = ajax;
     }
 
-    setSwitchMode(switchMode){
-        this.switchMode = switchMode 
+    setSwitchMode(switchMode) {
+        this.switchMode = switchMode;
     }
 
     // This method will download all the user documents from server
     // dir should be an array with keys and csrf token should be an string with csrf_token value
     downloadElements(index) {
         const downloadPromise = this.ajax.download(index, this.csrf_token);
+        // Alert
+        this.alerts.pageAlert(
+            this.pageAlerts,
+            "<p>Downloading</p><span class='spinner'></span>",
+            "alert white",
+            downloadPromise
+        );
         // Wait for promise response and then update documents and render
         downloadPromise.then((response) => {
+            // Alert
+            this.alerts.pageAlert(
+                this.pageAlerts,
+                "<p>All elements downloaded</p>",
+                "alert white"
+            );
+
             this.model.updateElement([""], response.data, "assign");
             this.switchMode.changeMode();
             this.switchMode.changeSwitch();
@@ -95,12 +125,23 @@ export default class Views {
     // This method will upload and update all the user documents from server
     // dir should be an array with keys and csrf token should be an string with csrf_token value
     uploadElements(index, data, csrf_token) {
-        console.log("Upload", csrf_token);
-        console.log(index, data);
         const uploadPromise = this.ajax.upload(index, data, this.csrf_token);
-
+        // Alert
+        this.alerts.pageAlert(
+            this.pageAlerts,
+            "<p>Updating</p><span class='spinner'></span>",
+            "alert white",
+            uploadPromise
+        );
         //Wait for promise response and then print the response
-        uploadPromise.then((response) => console.log(response.data));
+        // Alert
+        uploadPromise.then((response) =>
+            this.alerts.pageAlert(
+                this.pageAlerts,
+                "<p>Updated</p>",
+                "alert white"
+            )
+        );
     }
 
     // This method only add an element on the view with values specified on the values object
@@ -137,6 +178,7 @@ export default class Views {
     }
 
     closeModal(modal) {
+        this.modalAlert.classList.add("d-none");
         modal.classList.add("d-none");
     }
 

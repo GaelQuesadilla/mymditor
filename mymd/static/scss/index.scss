@@ -107,8 +107,11 @@ body {
     // -> ---
 }
 
-.d-none {
-    display: none
+
+@keyframes spinner {
+    to{
+        transform: rotate(360deg)
+    }
 }
 
 @import "section/forms";

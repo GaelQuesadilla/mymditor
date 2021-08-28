@@ -2,13 +2,13 @@ export default class Edit {
     constructor() {
         this.doc = document.querySelector("#doc");
 
-        // The nexts variables will select all buttons required to edit the document
+        // The next's variables will select all buttons required to edit the document
         this.btnBold = document.querySelector("#btnBold");
         this.btnItalic = document.querySelector("#btnItalic");
         this.btnUnderline = document.querySelector("#btnUnderline");
         this.btnCenter = document.querySelector("#btnCenter");
         this.btnLeft = document.querySelector("#btnLeft");
-        this.btnUnonderedList = document.querySelector("#btnUnonderedList");
+        this.btnUnorderedList = document.querySelector("#btnUnorderedList");
         this.btnFontSize = document.querySelector("#btnFontSize");
 
         this.init();
@@ -51,9 +51,9 @@ export default class Edit {
             )
         );
 
-        this.btnUnonderedList.addEventListener("click", () =>
+        this.btnUnorderedList.addEventListener("click", () =>
             document.execCommand(
-                this.btnUnonderedList.getAttribute("datatype", false, null)
+                this.btnUnorderedList.getAttribute("datatype", false, null)
             )
         );
 
