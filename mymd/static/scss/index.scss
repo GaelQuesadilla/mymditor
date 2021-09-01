@@ -1,40 +1,40 @@
 //! --- VARS ---
 
 //-> --- COLORS ---
-$red-color: #c21d4e;
-$red-color-dark: #831421;
+$red-color: hsl(342, 75%, 45%);
+$red-color-dark: hsl(353, 90%, 30%);
 
-$orange-color: #e09020;
-$orange-color-dark: #c85507;
+$orange-color: hsl(35, 76%, 50%);
+$orange-color-dark: hsl(24, 93%, 41%);
 
-$yellow-color: #f1ee19;
-$yellow-color-dark: #eecc09;
+$yellow-color: hsl(59, 89%, 52%);
+$yellow-color-dark: hsl(45, 93%, 48%);
 
-$green-color: #368e8c;
-$green-color-dark: #196261;
+$green-color: hsl(160, 75%, 38%);
+$green-color-dark: hsl(180, 60%, 30%);
 
-$blue-color: #2768df;
-$blue-color-dark: #201570;
+$blue-color: hsl(219, 74%, 51%);
+$blue-color-dark: hsl(247, 68%, 40%);
 
-$purple-color: #503080;
-$purple-color-dark: #201030;
+$purple-color: hsl(264, 45%, 35%);
+$purple-color-dark: hsl(270, 50%, 13%);
 
-$white-color: #F0F0F0;
-$white-color-dark: #D0D0D0;
+$white-color: hsl(0, 0%, 95%);
+$white-color-dark: hsl(0, 0%, 80%);
 
-$black-color: #15151a;
-$black-color-dark: #05050a;
+$black-color: hsl(240, 11%, 10%);
+$black-color-dark: hsl(240, 50%, 3%);
 
-$gray-color: #c0c0c0;
-$gray-color-dark: #606060;
-$gray-color-darker: #202030;
+$gray-color: hsl(240, 5%, 60%);
+$gray-color-dark: hsl(220, 10%, 40%);
+$gray-color-darker: hsl(250, 10%, 20%);
 // -> ---
-//-> --- ESPECIFIC COLORS ---
-$background-color: #dadddd;
-$background-color-dark: #0a1010;
+//-> --- SPECIFIC COLORS ---
+$background-color: hsl(200, 5%, 85%);
+$background-color-dark: hsl(180, 25%, 5%);
 
-$box-color: #f1f1f1;
-$box-color-dark: #1d1f1f;
+$box-color: hsl(240, 5%, 80%);
+$box-color-dark: hsl(180, 3%, 12%);
 
 $main-color: $purple-color;
 $main-color-dark: $purple-color-dark; 
@@ -42,8 +42,8 @@ $main-color-dark: $purple-color-dark;
 $text-color: $black-color-dark;
 $text-color-dark: $white-color;
 
-$input-color: #e2e0e3;
-$input-color-dark: #323035;
+$input-color: hsl(280, 5%, 88%);
+$input-color-dark: hsl(264, 5%, 20%);
 // -> ---
 // !---
 //! --- MIXINS --- 

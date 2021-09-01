@@ -39,7 +39,7 @@ nav {
         display: flex;
         outline: none;
         // -> --- COLORS --- 
-        background-color: #203040;
+        background-color: hsl(210, 33%, 19%);
         color: $white-color;
         // -> --- 
 
@@ -54,8 +54,8 @@ nav {
             left: 0;
             right: unset;
             // -> --- COLORS --- 
-            background: #f0f0f0;
-            box-shadow: 0 0 2px 2px rgba($color: #000, $alpha: 0.2);
+            background: hsl(0, 0%, 94%);
+            box-shadow: 0 0 2px 2px rgba($color: hsl(0, 0%, 0%), $alpha: 0.2);
             // -> --- 
         }
 

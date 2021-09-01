@@ -32,8 +32,8 @@ p {
         width: 1.5em;
         height: 1.5em;
         padding: 0px;
-        border: 0.2em solid #808080;
-        border-top-color: #3080a0;
+        border: 0.2em solid hsl(0, 0%, 50%);
+        border-top-color: hsl(197, 54%, 41%);
         animation: spinner 0.7s ease-in infinite;
         top: 0;
         left: 0;
@@ -125,16 +125,16 @@ p {
 
         // -> --- COLORS ---
         &.white {
-            background-color: #c0c0c5ee;
+            background-color: hsla(240, 4%, 76%, 0.933);
             .dark & {
-                background-color: #d0d0d9ee;
+                background-color: hsla(240, 11%, 83%, 0.933);
             }
         }
         // -> ---
 
         p {
             flex: 6;
-            color: #101010ff;
+            color: hsl(0, 0%, 6%);
             display: inline-block;
             
         }
