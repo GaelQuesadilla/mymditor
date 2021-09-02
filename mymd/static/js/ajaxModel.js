@@ -3,23 +3,34 @@ export default class Ajax {
 
     // This method use ajax to do a post request with the next values
     // url must be a string with the dir
-    // data should be an object with all values that will be uploaded 
+    // data should be an object with all values that will be uploaded
     // csrf_token should be a string with the csrf_token value
     post(url, data, csrf_token) {
         data = Object.assign(data, { csrfmiddlewaretoken: csrf_token });
 
+        let form = new FormData();
+        for (let i in data) {
+            form.append(i, data[i]);
+        }
+
+        const location = window.location;
         let asyncPost = new Promise((resolve, reject) => {
-            $.ajax({
-                url: `http://${window.location.host}/${url}`,
-                type: "POST",
-                data: data,
-                beforeSend: () =>{},
-                success: (response) => resolve(response), // Resolve promise and when success 
-                error: (err) => reject(err), // Reject the promise and go to catch()
-                
-            });
+            const post = fetch(
+                `${location.protocol}//${location.host}/${url}`,
+                {
+                    method: "POST",
+                    body: form,
+                }
+            );
+            post.then((response) => response.json())
+                .then((response) => {
+                    resolve(response);
+                })
+                .catch((response) => {
+                    reject(response);
+                });
         });
-        //Return the download promise
+        // Return the download promise
         return asyncPost;
     }
     // download method will post to request data to server database

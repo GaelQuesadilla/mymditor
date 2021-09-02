@@ -22,11 +22,14 @@ class download(View):
     def get(self, request, *args, **kwargs):
         pass
     def post(self, request, *args, **kwargs):
+        print(request.POST)
         if not request.user.is_authenticated:
+            print("USER NOT AUTHENTICATED")
             return HttpResponseNotAllowed("POST")
         
         form = downloadRequest(request.POST)
         if not form.is_valid():
+            print("INVALID FORM")
             return HttpResponseNotAllowed("POST")
 
 

@@ -142,16 +142,20 @@ Ok, i don't know what should i write here, but i'll write some annotations here
                     **Just delete all local storage** values when you log out of your user
 
                 * ### urls.js
-                    urls.js just export all tools required for **create and interpretate an url**
+                    urls.js just export all tools required for **create and interpret an url**
 
                 * ### ajaxModel.js
                     ajaxModel.js is a model to **request post to update user cloud** data
 
                 * ### alerts.js
-                    alerts.js will manage all **alerts display**, these alerts will be:
-                        * When elements will be downloaded
-                        * When elements will be updated
-                        
+                    alerts.js will manage all **alerts display**, these alerts will appear instantly, but if a promise is given, the alert will be deleted when the promise will be resolved.
+
+                    Perfect for alert about the status of post, like download or upload
+
+                    If a promise isn't given, the alert will be deleted after a little delay.
+                    
+                    In both cases, an element should be in a corner, the alert will be deleted when you click it.
+
                 * ***FOR MORE INFORMATION, I WRITTEN DETAILED INFORMATION ABOUT THE OPERATION OF THE SCRIPT IN THE COMMENTS OF EACH FILE***
 
     + **scss/**
